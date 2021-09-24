@@ -2,7 +2,7 @@ import React from "react";
 
 const Classes = ({ dayIndex, timeIndex, studentClasses, color, show }) => {
   const getBadgeClasses = (color) => {
-    return `badge p-2 my-1 hodina rounded-pill bg-${color} text-dark`;
+    return `badge shadowed p-2 my-1 hodina rounded-pill bg-${color} text-dark`;
   };
 
   return (

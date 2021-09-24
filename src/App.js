@@ -60,8 +60,8 @@ function App() {
     ],
     poky: [
       ["PA-1", "PA1-sem", "DML-p1", "TZP-p1", ""],
-      ["", "UOS-p1", "", "", "", "", ""],
-      ["", "", "", "UOS-cv5", "", "", ""],
+      ["PA1-lab", "UOS-p1", "", "", "", "", ""],
+      ["", "", "LA1-cv", "UOS-cv5", "", "", ""],
       ["", "", "DML-cv1", "", "LA1-p2", "", ""],
       ["", "", "", "", "GIT-p1", "TZP-cv2", ""],
     ],
@@ -69,7 +69,7 @@ function App() {
   classes.wojciech = classes.nick;
 
   const getBadgeClass = (color) => {
-    return `badge p-2 m-1 hodina rounded-pill bg-${color} text-dark`;
+    return `badge p-2 mt-3 mx-1 c-bold hodina rounded-pill bg-${color} text-dark`;
   };
 
   return (
@@ -79,7 +79,7 @@ function App() {
           onClick={() => {
             setShow(colors);
           }}
-          className="badge p-2 m-1 hodina rounded-pill bg-secondary text-dark"
+          className="badge p-2 m-1 c-bold hodina rounded-pill bg-secondary text-dark"
         >
           All
         </span>
