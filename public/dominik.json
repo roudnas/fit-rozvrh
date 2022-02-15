@@ -1,0 +1,109 @@
+{
+[
+		[
+			{
+				"title": "BI-DBS.21",
+				"startTime": "9:15",
+				"endTime": "10:45",
+				"type": "lec"
+			},
+			{
+				"title": "BI-PSI.21",
+				"startTime": "12:45",
+				"endTime": "14:15",
+				"type": "lec"
+			},
+			{
+				"title": "BI-MDF.21",
+				"startTime": "14:30",
+				"endTime": "16:00",
+				"type": "lec"
+			},
+			{
+				"title": "BI-MA1.21",
+				"startTime": "16:15",
+				"endTime": "17:45",
+				"type": "lec"
+			},
+			{
+				"title": "A0B04S1",
+				"startTime": "18:00",
+				"endTime": "19:30",
+				"type": "tut"
+			}
+		],
+		[
+			{
+				"title": "BI-SAP.21",
+				"startTime": "9:15",
+				"endTime": "10:45",
+				"type": "lec"
+			},
+			{
+				"title": "BI-PA2.21",
+				"startTime": "11:00",
+				"endTime": "12:30",
+				"type": "lec"
+			},
+			{
+				"title": "BI-DBS.21",
+				"startTime": "12:45",
+				"endTime": "14:15",
+				"type": "tut"
+			},
+			{
+				"title": "BI-MA1.21",
+				"startTime": "16:15",
+				"endTime": "17:45",
+				"type": "lab"
+			},
+			{
+				"title": "BI-SAP.21",
+				"startTime": "18:00",
+				"endTime": "19:30",
+				"type": "lab"
+			}
+		],
+		[
+			{
+				"title": "BI-PA2.21",
+				"startTime": "14:30",
+				"endTime": "16:00",
+				"type": "tut"
+			},
+			{
+				"title": "BI-KSA",
+				"startTime": "16:15",
+				"endTime": "17:45",
+				"type": "lec"
+			},
+			{
+				"title": "BI-PA2.21",
+				"startTime": "18:00",
+				"endTime": "19:30",
+				"type": "lab"
+			}
+		],
+		[
+			{
+				"title": "BI-DBS.21",
+				"startTime": "12:45",
+				"endTime": "14:15",
+				"type": "lab"
+			},
+			{
+				"title": "BI-PSI.21",
+				"startTime": "14:30",
+				"endTime": "16:00",
+				"type": "lab"
+			},
+			{
+				"title": "BI-PJS.1",
+				"startTime": "16:16",
+				"endTime": "18:45",
+				"type": "tut"
+			}
+		],
+		[]
+	] 
+}

@@ -1,21 +1,26 @@
 import React from "react";
+import Class from "./Class";
 
-const Classes = ({ dayIndex, timeIndex, studentClasses, color, show }) => {
-  const getBadgeClasses = (color) => {
-    return `badge shadowed p-2 my-1 hodina rounded-pill bg-${color} text-dark`;
-  };
-
+const Classes = ({ classArr, dayIndex, dims }) => {
+  
   return (
-    <>
-      {studentClasses[dayIndex][timeIndex] !== "" && show.includes(color) ? (
-        <span className={getBadgeClasses(color)}>
-          <p className="m-0">{studentClasses[dayIndex][timeIndex]}</p>
-        </span>
-      ) : (
-        <></>
-      )}
-    </>
-  );
+		<div className="classes text-dark pt-2 pb-2 d-flex flex-row align-items-center">
+			{(classArr.length >= 1) ? (
+			<h5 className="text-light abs">{getDayName(dayIndex)}</h5>
+			) : <></>}
+			{classArr.map((course, i) => (
+				<Class 
+					key={i} dims={dims} 
+					obj={course}/>
+				))}
+		</div>
+	)
 };
+
+
+const getDayName = (index) => {
+	const names = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+	return names[index];
+}
 
 export default Classes;

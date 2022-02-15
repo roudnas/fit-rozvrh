@@ -34,3 +34,54 @@ hr {
   border-top: 3px solid #2C2C2C;
 }
 
+.bg-lab {
+  background-color: #4FC3F7;
+}
+
+.bg-tut {
+  background-color: #AED581;
+}
+
+.bg-lec {
+  background-color: #FFB74D;
+}
+
+.course {
+  box-shadow: 1px 3px 5px #000;
+  position:relative;
+  top: 0;
+}
+
+.course:hover {
+  transition: all .3s ease;
+  opacity: .8;
+  cursor: pointer;
+}
+
+.text-bold {
+  font-weight: 700!important;
+}
+
+.note {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.abs {
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.classes {
+  position: relative;
+  top: 0;
+}
+
+.pointer:hover {
+  transition: all .7s ease;
+  cursor: pointer;
+  opacity: .7;
+  transform: translateX(3px);
+}

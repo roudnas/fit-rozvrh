@@ -1,0 +1,119 @@
+[
+		[
+			{
+				"title": "BI-DBS.21",
+				"startTime": "9:15",
+				"endTime": "10:45",
+				"type": "lec",
+				"room": "TK:BS"
+			},
+			{
+				"title": "BI-PSI.21",
+				"startTime": "12:45",
+				"endTime": "14:15",
+				"type": "lec",
+				"room": "TK:BS"
+			},
+			{
+				"title": "BI-ARD.21",
+				"startTime": "14:30",
+				"endTime": "17:00",
+				"type": "tut",
+				"room": "TH:A-1042"
+			},
+			{
+				"title": "A0B04JAP",
+				"startTime": "18:00",
+				"endTime": "19:30",
+				"type": "tut",
+				"room": "T2:A4-202b"
+			}
+		],
+		[
+			{
+				"title": "BI-SAP.21",
+				"startTime": "9:15",
+				"endTime": "10:45",
+				"type": "lec",
+				"room": "T9:105"
+			},
+			{
+				"title": "BI-PA2.21",
+				"startTime": "11:00",
+				"endTime": "12:30",
+				"type": "lec",
+				"room": "T9:105"
+			},
+			{
+				"title": "BI-DBS.21",
+				"startTime": "12:45",
+				"endTime": "14:15",
+				"type": "tut",
+				"room":"TK:BS"
+			},
+			{
+				"title": "BI-MA1.21",
+				"startTime": "16:15",
+				"endTime": "17:45",
+				"type": "lab",
+				"room": "TH:A-942",
+				"note": "even"
+			}
+		],
+		[
+			{
+				"title": "TV2",
+				"startTime": "9:15",
+				"endTime": "10:45",
+				"type": "lab",
+				"room": "juliska"
+			},
+			{
+				"title": "BI-PA2.21",
+				"startTime": "16:15",
+				"endTime": "17:45",
+				"type": "tut",
+				"room": "T9:155",
+				"note": "odd"
+			},
+			{
+				"title": "BI-PA2.21",
+				"startTime": "18:00",
+				"endTime": "19:30",
+				"type": "lab",
+				"room": "T9:349"
+			}
+		],
+		[
+			{
+				"title": "BI-DBS.21",
+				"startTime": "12:45",
+				"endTime": "14:15",
+				"type": "lab",
+				"room":"T9:348",
+				"note": "even"
+			},
+			{
+				"title": "A0B04N1",
+				"startTime": "14:30",
+				"endTime": "16:00",
+				"type": "tut",
+				"room": "T2:C4-78"
+			},
+			{
+				"title": "BI-SAP.21",
+				"startTime": "16:15",
+				"endTime": "17:45",
+				"type": "lab",
+				"room": "TH:A-1042"
+			},
+			{
+				"title": "BI-PSI.21",
+				"startTime": "18:00",
+				"endTime": "19:30",
+				"type": "lab",
+				"room": "T9:344",
+				"note": "odd"
+			}
+		], []
+	] 
