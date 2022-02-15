@@ -25,3 +25,12 @@ hr {
 .shadowed {
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5) !important;
 }
+
+.main {
+  min-height: 90vh;
+}
+
+.hour {
+  border-top: 3px solid #2C2C2C;
+}
+
