@@ -1,6 +1,8 @@
 import React from 'react';
 
 const Class = ({dims, obj}) => {
+	if (dims.width < 1200)
+		dims.width = 1200;
 	const fullW = dims.width / 14;
 	const sT = parseTime(obj.startTime);
 	const eT = parseTime(obj.endTime);

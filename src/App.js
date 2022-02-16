@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="App bg-dark py-2 px-5 text-light text-center">
-      <section className="d-flex px-5 flex-row align-items-center justify-content-between">
+      <section className="d-flex px-5 nav-main align-items-center justify-content-between">
         <h2 className="pointer" onClick={() => {
           setDataSource(nullArr);
           setVictim("");

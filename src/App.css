@@ -86,12 +86,21 @@ hr {
   transform: translateX(3px);
 }
 
-@media screen and (max-width: 992px)
+@media screen and (max-width: 1200px)
 {
-  .classWrapper {
-    overflow-x: scroll; 
+  .wrapperino {
+    overflow-x: scroll!important; 
+  }
+  .classes, .classWrapper {
+    width: 1200px !important;
   }
   .hour {
+    font-size: .8rem !important;
+  }
+  .nav-main {
+    flex-direction: column !important;
+  }
+  .course h6 {
     font-size: .8rem !important;
   }
 }
