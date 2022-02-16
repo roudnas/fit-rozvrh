@@ -86,6 +86,12 @@ hr {
   transform: translateX(3px);
 }
 
+.star:hover {
+  transition: all .3s ease;
+  cursor:pointer;
+  opacity: .8;
+}
+
 @media screen and (max-width: 1200px)
 {
   .wrapperino {

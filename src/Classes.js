@@ -1,6 +1,5 @@
 import React from "react";
 import Class from "./Class";
-import Hour from "./Hour";
 
 const Classes = ({classArr, dayIndex, dims}) => {
 

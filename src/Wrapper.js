@@ -21,13 +21,17 @@ const Wrapper = ({dataSource}) => {
 	let fullW;
 	if (windowDimensions.width >= 1200)
 		fullW = windowDimensions.width / 14;
-	classesData.forEach((arr) => {
-		let prevEnd = "";
-		arr.forEach((course) => {
-			course.prevEnd = prevEnd;
-			prevEnd = course.endTime;
+
+	if (classesData.length && classesData[0].length) {
+		classesData.forEach((arr) => {
+			let prevEnd = "";
+			arr.forEach((course) => {
+				course.prevEnd = prevEnd;
+				prevEnd = course.endTime;
+			})
 		})
-	})
+	}
+
 
 	let hours = [];
 	for (let i = 6; i < 20; ++i)
@@ -42,9 +46,12 @@ const Wrapper = ({dataSource}) => {
 				justify-content-around m-0">
 					{hours}
 				</div>
-				{classesData.map((classArr, i) => (
-					<Classes classArr={classArr} dayIndex={i} dims={windowDimensions} />
-				))}
+				{classesData.length && classesData[0].length ? (
+					classesData.map((classArr, i) => (
+						<Classes classArr={classArr} key={i} dayIndex={i} dims={windowDimensions} />
+					))
+				) : <></>}
+
 			</section>
 		</div >
 	)
