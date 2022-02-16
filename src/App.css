@@ -94,6 +94,9 @@ hr {
   .classes, .classWrapper {
     width: 1200px !important;
   }
+  .h-index {
+    font-size: 1rem !important;
+  }
   .hour {
     font-size: .8rem !important;
   }

@@ -8,7 +8,7 @@ const Classes = ({classArr, dayIndex, dims}) => {
 		<>
 			<div className="classes text-dark pt-2 pb-2 d-flex flex-row align-items-center">
 				{(classArr.length >= 1) ? (
-					<h5 className="text-light abs">{getDayName(dayIndex)}</h5>
+					<h5 className="text-light h-index abs">{getDayName(dayIndex)}</h5>
 				) : <></>}
 				{classArr.map((course, i) => (
 					<Class
