@@ -52,7 +52,8 @@ function App() {
       <section className="d-flex px-4 py-2 nav-main align-items-center justify-content-between">
         <h2 className="pointer"
           onClick={() => {
-            setDataSource(nullArr);
+            setDataSource(favData);
+            setVictim(favorite);
           }}>FitZvrh</h2>
         <section className="d-flex flex-row align-items-center">
           <Dropdown>
