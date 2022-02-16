@@ -1,15 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import Hour from './Hour';
-import Class from "./Class";
 import Classes from "./Classes";
 
 
 const Wrapper = ({dataSource}) => {
 	const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-	const classesData = dataSource; 
+	const classesData = dataSource;
+
 	useEffect(() => {
-		const listener = (e) => {
-			setWindowDimensions(getWindowDimensions());
+		const listener = () => {
+			if (getWindowDimensions().width > 1200)
+				setWindowDimensions(getWindowDimensions());
 		}
 		window.addEventListener("resize", listener);
 		return () => {
@@ -17,7 +18,9 @@ const Wrapper = ({dataSource}) => {
 		}
 	}, [])
 
-	const fullW = windowDimensions.width / 14;
+	let fullW;
+	if (windowDimensions.width >= 1200)
+		fullW = windowDimensions.width / 14;
 	classesData.forEach((arr) => {
 		let prevEnd = "";
 		arr.forEach((course) => {
@@ -33,14 +36,15 @@ const Wrapper = ({dataSource}) => {
 
 	return (
 		<div className="bg-dark w-100 main rounded">
-			<div className="hours bg-light rounded text-dark d-flex flex-row m-0">
-				{hours}
-			</div>
-			<section 
-				className="classWrapper py-4 main d-flex flex-column justify-content-between">
-			{classesData.map((classArr, i) => (
-				<Classes classArr={classArr} dayIndex={i} dims={windowDimensions} />
-			))}
+			<section
+				className="classWrapper pb-3 pt-1 main d-flex flex-column justify-content-between">
+				<div className="hours bg-light w-100 rounded text-dark d-flex flex-row
+				justify-content-around m-0">
+					{hours}
+				</div>
+				{classesData.map((classArr, i) => (
+					<Classes classArr={classArr} dayIndex={i} dims={windowDimensions} />
+				))}
 			</section>
 		</div >
 	)

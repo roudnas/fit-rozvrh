@@ -85,3 +85,13 @@ hr {
   opacity: .7;
   transform: translateX(3px);
 }
+
+@media screen and (max-width: 992px)
+{
+  .classWrapper {
+    overflow-x: scroll; 
+  }
+  .hour {
+    font-size: .8rem !important;
+  }
+}

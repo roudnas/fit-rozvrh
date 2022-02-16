@@ -4,23 +4,22 @@ const Class = ({dims, obj}) => {
 	const fullW = dims.width / 14;
 	const sT = parseTime(obj.startTime);
 	const eT = parseTime(obj.endTime);
-	let marL =  (sT - 7) * fullW;
-	if(obj.prevEnd.length)
-	{
-		const	prevT = parseTime(obj.prevEnd);
+	let marL = (sT - 7) * fullW;
+	if (obj.prevEnd.length) {
+		const prevT = parseTime(obj.prevEnd);
 		marL = (sT - prevT) * fullW;
 	}
-	const width = (eT-sT) * fullW;
+	const width = (eT - sT) * fullW;
 	const className = `course text-dark rounded bg-${obj.type} p-2`
 
 	return (
 		<div className={className}
 			style={{
-				width: width, marginLeft: 0, marginTop: 20,
-				marginLeft: marL	
+				width: width, marginTop: 20,
+				marginLeft: marL
 			}}>
-			{(typeof(obj.note) !== "undefined") ? (
-			<h6 className="note bg-dark p-1 text-bold text-light rounded">{obj.note}</h6>
+			{(typeof (obj.note) !== "undefined") ? (
+				<h6 className="note bg-dark p-1 text-bold text-light rounded">{obj.note}</h6>
 			) : <></>}
 			<h6>{obj.startTime} - {obj.endTime}</h6>
 			<h6 className="m-0 text-bold">{obj.title}</h6>
