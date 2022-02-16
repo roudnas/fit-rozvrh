@@ -4,6 +4,7 @@ import Wrapper from "./Wrapper";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DomData from "./dominik.json";
 import PokNicData from "./pokynicolas.json";
+import MatData from "./matej.json";
 
 function App() {
   const [dataSource, setDataSource] = useState([[],[],[],[],[]]);
@@ -29,6 +30,10 @@ function App() {
             setDataSource(PokNicData); 
             setVictim("| Nicolas/Poky");
           }}>Nicolas / Poky</Dropdown.Item>
+          <Dropdown.Item onClick={() => {
+            setDataSource(MatData); 
+            setVictim("| Matej");
+          }}>Matej</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown> 
       </section>
