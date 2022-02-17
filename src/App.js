@@ -1,25 +1,21 @@
 import "./App.css";
 import {useState, useEffect} from "react";
 import Wrapper from "./Wrapper";
+import Header from "./Header";
 import Dropdown from 'react-bootstrap/Dropdown';
 import Badge from 'react-bootstrap/Badge';
-import DomData from "./dominik.json";
-import PokNicData from "./pokynicolas.json";
-import MatData from "./matej.json";
-import SarkData from "./sarka.json";
-import ZdenData from "./zdeny.json";
-import {AiTwotoneStar, AiOutlineStar} from 'react-icons/ai';
+import DomData from "./data/dominik.json";
+import PokNicData from "./data/pokynicolas.json";
+import MatData from "./data/matej.json";
+import SarkData from "./data/sarka.json";
+import ZdenData from "./data/zdeny.json";
+
 
 function App() {
+
   const [favorite, setFavorite] = useState(localStorage.getItem("favorite"));
   const [victim, setVictim] = useState(localStorage.getItem("favorite"));
   const nullArr = [[], [], [], [], []];
-  const startOfTheSemester = Date.parse("2022-02-14");
-  const now = Date.parse(new Date());
-  const diffWeeks = Math.floor(1 + (now - startOfTheSemester) / 1001 / 60 / 60 / 24 / 7);
-  console.log(diffWeeks)
-  const evenOrOdd = ((diffWeeks % 2) == 0) ? "even" : "odd";
-  console.log(evenOrOdd)
 
   const people = [
     {
@@ -69,48 +65,17 @@ function App() {
 
   return (
     <div className="App bg-dark py-2 px-2 text-light text-center">
-      <section className="d-flex px-4 py-2 nav-main align-items-center justify-content-between">
-        <section className="d-flex flex-row align-items-center">
-          <h2 className="pointer me-2"
-            onClick={() => {
-              setDataSource(favData);
-              setVictim(favorite);
-            }}>FitZvrh</h2>
-          <Badge bg="secondary">{evenOrOdd} week</Badge>
-        </section>
-        <section className="d-flex flex-row align-items-center">
-          <Dropdown>
-            <Dropdown.Toggle className="text-bold" variant="success" id="dropdown-basic">
-              VICTIM
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              {people.map((person, i) => (
-                <Dropdown.Item key={i} onClick={() => {
-                  setDataSource(person.data);
-                  setVictim(person.name);
-                }}>{person.name}</Dropdown.Item>
-              ))}
-            </Dropdown.Menu>
-          </Dropdown>
-          {victim && victim !== "null" ? (
-            <>
-              <Badge bg="secondary" className="ms-2 d-flex flex-row align-items-center"><h6 className="m-0">{victim}</h6>
-                {favorite === victim ? (
-                  <AiTwotoneStar size={15} className="star" onClick={() => {
-                    unsetFavorite()
-                  }} />
-                ) : (
-                  <AiOutlineStar className="star" onClick={() => {
-                    setFavorite(victim)
-                  }} />
-                )}
-              </Badge>
-            </>
-          ) : <></>}
-
-        </section>
-
-      </section>
+      <Header 
+          dataSource={dataSource} 
+          favData={favData}
+          victim={victim} 
+          favorite={favorite}
+          setFavorite={setFavorite}
+          people={people}  
+          setVictim={setVictim}
+          setDataSource={setDataSource}
+          unsetFavorite={unsetFavorite}
+      /> 
       <Wrapper dataSource={dataSource} data={people} />
     </div>
   );

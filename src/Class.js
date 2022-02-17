@@ -1,17 +1,20 @@
 import React from 'react';
 
 const Class = ({dims, obj, similar}) => {
-	console.log(similar)
+
 	if (dims.width < 1200)
 		dims.width = 1200;
+
 	const fullW = dims.width / 14;
 	const sT = parseTime(obj.startTime);
 	const eT = parseTime(obj.endTime);
 	let marL = (sT - 7) * fullW;
+
 	if (obj.prevEnd.length) {
 		const prevT = parseTime(obj.prevEnd);
 		marL = (sT - prevT) * fullW;
 	}
+
 	const width = (eT - sT) * fullW;
 	const className = `course text-dark rounded bg-${obj.type} p-2`
 

@@ -22,28 +22,23 @@ const Wrapper = ({dataSource, data}) => {
 	if (windowDimensions.width >= 1200)
 		fullW = windowDimensions.width / 14;
 
-	if (classesData.length && classesData[0].length) {
-		classesData.forEach((arr) => {
-			let prevEnd = "";
-			arr.forEach((course) => {
-				course.prevEnd = prevEnd;
-				prevEnd = course.endTime;
-			})
-		})
-	}
+	setPreviousData(classesData);
 
 
 	let hours = [];
 	for (let i = 6; i < 20; ++i)
 		hours.push(<Hour index={i + 1} key={i} w={fullW} />)
 
+	const classWrapperStyle = 
+		"classWrapper pb-3 pt-1 main d-flex flex-column justify-content-between";
+	const hoursStyle = 
+		"hours bg-light w-100 rounded text-dark d-flex flex-row justify-content-around m-0";
+
 
 	return (
 		<div className="bg-dark wrapperino w-100 main rounded">
-			<section
-				className="classWrapper pb-3 pt-1 main d-flex flex-column justify-content-between">
-				<div className="hours bg-light w-100 rounded text-dark d-flex flex-row
-				justify-content-around m-0">
+			<section className={classWrapperStyle}>
+				<div className={hoursStyle}>
 					{hours}
 				</div>
 				{classesData.length && classesData[0].length ? (
@@ -51,7 +46,6 @@ const Wrapper = ({dataSource, data}) => {
 						<Classes classArr={classArr} data={data} key={i} dayIndex={i} dims={windowDimensions} />
 					))
 				) : <></>}
-
 			</section>
 		</div >
 	)
@@ -63,6 +57,19 @@ const getWindowDimensions = () => {
 		width,
 		height
 	};
+}
+
+const setPreviousData = ( classesData ) => 
+{
+	if (classesData.length && classesData[0].length) {
+		classesData.forEach((arr) => {
+			let prevEnd = "";
+			arr.forEach((course) => {
+				course.prevEnd = prevEnd;
+				prevEnd = course.endTime;
+			})
+		})
+	}
 }
 
 export default Wrapper;
