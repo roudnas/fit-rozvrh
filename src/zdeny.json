@@ -1,0 +1,121 @@
+[
+		[
+			{
+				"title": "BI-DBS.21",
+				"startTime": "9:15",
+				"endTime": "10:45",
+				"type": "lec",
+				"room": "TK:BS"
+			},
+			{
+				"title": "BI-LA2.21",
+				"startTime": "12:45",
+				"endTime": "14:15",
+				"type": "lec",
+				"room": "T9:155"
+			},
+			{
+				"title": "BI-PA2.21",
+				"startTime": "14:30",
+				"endTime": "16:00",
+				"type": "lec",
+				"room": "T9:105"
+			},
+			{
+				"title": "BI-SAP.21",
+				"startTime": "16:15",
+				"endTime": "17:45",
+				"type": "tut",
+				"room": "T9:155",
+				"note": "even"
+			}
+			
+		],
+		[
+			{
+				"title": "BI-SAP.21",
+				"startTime": "9:15",
+				"endTime": "10:45",
+				"type": "lec",
+				"room": "T9:105"
+			},
+			{
+				"title": "BI-LA2.21",
+				"startTime": "11:00",
+				"endTime": "12:30",
+				"type": "tut",
+				"room": "TH:A-1442"
+			},
+			{
+				"title": "BI-MA1.21",
+				"startTime": "12:45",
+				"endTime": "14:15",
+				"type": "lec",
+				"room":"T9:105"
+			},
+			{
+				"title": "BI-MA1.21",
+				"startTime": "14:30",
+				"endTime": "16:00",
+				"type": "lab",
+				"room": "T9:302",
+				"note": "odd"
+			},
+			{
+				"title": "BI-DBS.21",
+				"startTime": "16:15",
+				"endTime": "17:45",
+				"type": "tut",
+				"room": "TK:BS"
+			}
+		],
+		[
+			{
+				"title": "BI-DBS.21",
+				"startTime": "12:45",
+				"endTime": "14:15",
+				"type": "lab",
+				"room": "T9:348",
+				"note": "even"
+			},
+			{
+				"title": "BI-PA2.21",
+				"startTime": "14:30",
+				"endTime": "16:00",
+				"type": "tut",
+				"room": "T9:155",
+				"note": "even"
+			}
+		],
+		[],
+		[
+			{
+				"title": "BI-PA2.21",
+				"startTime": "9:15",
+				"endTime": "10:45",
+				"type": "lab",
+				"room":"T9:349"
+			},
+			{
+				"title": "BI-SAP.21",
+				"startTime": "11:00",
+				"endTime": "12:30",
+				"type": "lab",
+				"room": "TH:A-1042"
+			},
+			{
+				"title": "BI-TEX",
+				"startTime": "12:45",
+				"endTime": "14:15",
+				"type": "tut",
+				"room": "TH:A-s135"
+			},
+			{
+				"title": "BI-TEX",
+				"startTime": "14:30",
+				"endTime": "16:00",
+				"type": "lec",
+				"room": "TH:A-s135"
+			}
+		]
+	] 

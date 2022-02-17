@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Class = ({dims, obj}) => {
+const Class = ({dims, obj, similar}) => {
+	console.log(similar)
 	if (dims.width < 1200)
 		dims.width = 1200;
 	const fullW = dims.width / 14;

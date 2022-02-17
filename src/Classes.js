@@ -1,7 +1,7 @@
 import React from "react";
 import Class from "./Class";
 
-const Classes = ({classArr, dayIndex, dims}) => {
+const Classes = ({classArr, data, dayIndex, dims}) => {
 
 	return (
 		<>

@@ -7,19 +7,31 @@ import DomData from "./dominik.json";
 import PokNicData from "./pokynicolas.json";
 import MatData from "./matej.json";
 import SarkData from "./sarka.json";
+import ZdenData from "./zdeny.json";
 import {AiTwotoneStar, AiOutlineStar} from 'react-icons/ai';
 
 function App() {
   const [favorite, setFavorite] = useState(localStorage.getItem("favorite"));
   const [victim, setVictim] = useState(localStorage.getItem("favorite"));
   const nullArr = [[], [], [], [], []];
+  const startOfTheSemester = Date.parse("2022-02-14");
+  const now = Date.parse(new Date());
+  const diffWeeks = Math.floor(1 + (now - startOfTheSemester) / 1001 / 60 / 60 / 24 / 7);
+  console.log(diffWeeks)
+  const evenOrOdd = ((diffWeeks % 2) == 0) ? "even" : "odd";
+  console.log(evenOrOdd)
+
   const people = [
     {
       name: "Dominik",
       data: DomData
     },
     {
-      name: "Nicolas/Poky",
+      name: "Nicolas",
+      data: PokNicData
+    },
+    {
+      name: "Poky",
       data: PokNicData
     },
     {
@@ -27,9 +39,17 @@ function App() {
       data: MatData
     },
     {
+      name: "Majda",
+      data: MatData
+    },
+    {
       name: "Sarka",
       data: SarkData
     },
+    {
+      name: "Zdenek",
+      data: ZdenData
+    }
   ];
 
   let favData = people.find((per) => per.name === favorite);
@@ -50,11 +70,14 @@ function App() {
   return (
     <div className="App bg-dark py-2 px-2 text-light text-center">
       <section className="d-flex px-4 py-2 nav-main align-items-center justify-content-between">
-        <h2 className="pointer"
-          onClick={() => {
-            setDataSource(favData);
-            setVictim(favorite);
-          }}>FitZvrh</h2>
+        <section className="d-flex flex-row align-items-center">
+          <h2 className="pointer me-2"
+            onClick={() => {
+              setDataSource(favData);
+              setVictim(favorite);
+            }}>FitZvrh</h2>
+          <Badge bg="secondary">{evenOrOdd} week</Badge>
+        </section>
         <section className="d-flex flex-row align-items-center">
           <Dropdown>
             <Dropdown.Toggle className="text-bold" variant="success" id="dropdown-basic">
@@ -88,7 +111,7 @@ function App() {
         </section>
 
       </section>
-      <Wrapper dataSource={dataSource} />
+      <Wrapper dataSource={dataSource} data={people} />
     </div>
   );
 }

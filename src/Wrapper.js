@@ -3,7 +3,7 @@ import Hour from './Hour';
 import Classes from "./Classes";
 
 
-const Wrapper = ({dataSource}) => {
+const Wrapper = ({dataSource, data}) => {
 	const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 	const classesData = dataSource;
 
@@ -48,7 +48,7 @@ const Wrapper = ({dataSource}) => {
 				</div>
 				{classesData.length && classesData[0].length ? (
 					classesData.map((classArr, i) => (
-						<Classes classArr={classArr} key={i} dayIndex={i} dims={windowDimensions} />
+						<Classes classArr={classArr} data={data} key={i} dayIndex={i} dims={windowDimensions} />
 					))
 				) : <></>}
 
