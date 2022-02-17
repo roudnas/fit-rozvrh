@@ -25,7 +25,7 @@ const Class = ({dims, obj, similar}) => {
 				marginLeft: marL
 			}}>
 			{(typeof (obj.note) !== "undefined") ? (
-				<h6 className="note bg-dark p-1 text-bold text-light rounded">{obj.note}</h6>
+				<h6 className="note bg-danger p-1 text-bold text-light rounded">{obj.note}</h6>
 			) : <></>}
 			<h6>{obj.startTime} - {obj.endTime}</h6>
 			<h6 className="m-0 text-bold">{obj.title}</h6>

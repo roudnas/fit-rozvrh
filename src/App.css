@@ -64,7 +64,7 @@ hr {
 
 .note {
   position: absolute;
-  top: 0;
+  bottom: -25%;
   right: 0;
 }
 
