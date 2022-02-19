@@ -8,6 +8,7 @@ import DomData from "./data/dominik.json";
 import PokNicData from "./data/pokynicolas.json";
 import MatData from "./data/matej.json";
 import SarkData from "./data/sarka.json";
+import JachData from "./data/jachym.json";
 import ZdenData from "./data/zdeny.json";
 
 
@@ -45,6 +46,10 @@ function App() {
     {
       name: "Zdenek",
       data: ZdenData
+    },
+    {
+      name: "Jachym",
+      data: JachData
     }
   ];
 
@@ -65,17 +70,17 @@ function App() {
 
   return (
     <div className="App bg-dark py-2 px-2 text-light text-center">
-      <Header 
-          dataSource={dataSource} 
-          favData={favData}
-          victim={victim} 
-          favorite={favorite}
-          setFavorite={setFavorite}
-          people={people}  
-          setVictim={setVictim}
-          setDataSource={setDataSource}
-          unsetFavorite={unsetFavorite}
-      /> 
+      <Header
+        dataSource={dataSource}
+        favData={favData}
+        victim={victim}
+        favorite={favorite}
+        setFavorite={setFavorite}
+        people={people}
+        setVictim={setVictim}
+        setDataSource={setDataSource}
+        unsetFavorite={unsetFavorite}
+      />
       <Wrapper dataSource={dataSource} data={people} />
     </div>
   );

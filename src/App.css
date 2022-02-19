@@ -46,6 +46,11 @@ hr {
   background-color: #FFB74D;
 }
 
+.bg-black {
+  background-color: #000 !important;
+  border: none !important;
+}
+
 .course {
   box-shadow: 1px 3px 5px #000;
   position:relative;
