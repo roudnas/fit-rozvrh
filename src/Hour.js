@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Hour = ({index, w}) => {
-	const cls = "hour text-bold d-flex py-1 align-items-end justify-content-center";
+	const cls = "hour text-bold d-flex py-1 align-items-end";
 	return (
 		<div className={cls} style={{width: w}}>
 			{index}:00

@@ -29,10 +29,10 @@ const Wrapper = ({dataSource, data}) => {
 	for (let i = 6; i < 20; ++i)
 		hours.push(<Hour index={i + 1} key={i} w={fullW} />)
 
-	const classWrapperStyle = 
+	const classWrapperStyle =
 		"classWrapper pb-3 pt-1 main d-flex flex-column justify-content-between";
-	const hoursStyle = 
-		"hours bg-light w-100 rounded text-dark d-flex flex-row justify-content-around m-0";
+	const hoursStyle =
+		"hours bg-light w-100 rounded text-dark d-flex flex-row ps-2 m-0";
 
 
 	return (
@@ -59,8 +59,7 @@ const getWindowDimensions = () => {
 	};
 }
 
-const setPreviousData = ( classesData ) => 
-{
+const setPreviousData = (classesData) => {
 	if (classesData.length && classesData[0].length) {
 		classesData.forEach((arr) => {
 			let prevEnd = "";
