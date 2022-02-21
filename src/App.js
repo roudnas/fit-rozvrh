@@ -2,14 +2,15 @@ import "./App.css";
 import {useState, useEffect} from "react";
 import Wrapper from "./Wrapper";
 import Header from "./Header";
-import Dropdown from 'react-bootstrap/Dropdown';
-import Badge from 'react-bootstrap/Badge';
 import DomData from "./data/dominik.json";
 import PokNicData from "./data/pokynicolas.json";
 import MatData from "./data/matej.json";
 import SarkData from "./data/sarka.json";
 import JachData from "./data/jachym.json";
 import ZdenData from "./data/zdeny.json";
+import SuldaData from "./data/sulda.json";
+import AdData from "./data/adam.json";
+import LeoData from "./data/leo.json";
 
 
 function App() {
@@ -32,6 +33,10 @@ function App() {
       data: PokNicData
     },
     {
+      name: "Sulda",
+      data: SuldaData
+    },
+    {
       name: "Matej",
       data: MatData
     },
@@ -50,6 +55,14 @@ function App() {
     {
       name: "Jachym",
       data: JachData
+    },
+    {
+      name: "Adam",
+      data: AdData
+    },
+    {
+      name: "Leo",
+      data: LeoData
     }
   ];
 
