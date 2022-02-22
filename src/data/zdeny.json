@@ -71,6 +71,13 @@
 		],
 		[
 			{
+				"title": "Telocvik",
+				"startTime": "9:00",
+				"endTime": "10:30",
+				"type": "tut",
+				"room": "juliska"
+			},
+			{
 				"title": "BI-DBS.21",
 				"startTime": "12:45",
 				"endTime": "14:15",
@@ -108,7 +115,8 @@
 				"startTime": "12:45",
 				"endTime": "14:15",
 				"type": "tut",
-				"room": "TH:A-s135"
+				"room": "TH:A-s135",
+				"note": "even"
 			},
 			{
 				"title": "BI-TEX",
