@@ -6,9 +6,7 @@ const Classes = ({classArr, data, dayIndex, dims}) => {
 	return (
 		<>
 			<div className="classes text-dark pt-2 pb-2 d-flex flex-row align-items-center">
-				{(classArr.length >= 1) ? (
-					<h5 className="text-light h-index abs">{getDayName(dayIndex)}</h5>
-				) : <></>}
+				<h5 className="text-light h-index abs">{getDayName(dayIndex)}</h5>
 				{classArr.map((course, i) => (
 					<Class
 						key={i} dims={dims}

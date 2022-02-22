@@ -32,8 +32,7 @@ const Wrapper = ({dataSource, data}) => {
 	const classWrapperStyle =
 		"classWrapper pb-3 pt-1 main d-flex flex-column justify-content-between";
 	const hoursStyle =
-		"hours bg-light w-100 rounded text-dark d-flex flex-row ps-2 m-0";
-
+		"hours bg-light w-100 rounded text-dark d-flex flex-row justify-content-around ps-2 m-0";
 
 	return (
 		<div className="bg-dark wrapperino w-100 main rounded">
