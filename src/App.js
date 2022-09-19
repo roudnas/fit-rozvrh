@@ -12,6 +12,7 @@ import SuldaData from "./data/sulda.json";
 import AdData from "./data/adam.json";
 import LeoData from "./data/leo.json";
 import NikcaData from "./data/nikca.json";
+import KubData from "./data/kuba.json";
 
 
 function App() {
@@ -68,6 +69,10 @@ function App() {
     {
       name: "Nikca",
       data: NikcaData
+    },
+    {
+      name: "Kubajz",
+      data: KubData,
     }
   ];
 
