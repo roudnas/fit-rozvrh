@@ -2,7 +2,7 @@ import "./App.css";
 import {useState, useEffect} from "react";
 import Wrapper from "./Wrapper";
 import Header from "./Header";
-import DomData from "./data/dominik.json";
+import DomData from "./data/dom_1.json";
 import PokNicData from "./data/pokynicolas.json";
 import MatData from "./data/matej.json";
 import SarkData from "./data/sarka.json";
