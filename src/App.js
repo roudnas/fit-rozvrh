@@ -4,7 +4,7 @@ import Wrapper from "./Wrapper";
 import Header from "./Header";
 import DomData from "./data/dom_1.json";
 import PokNicData from "./data/pokynicolas.json";
-import MatData from "./data/matej.json";
+import MatData from "./data/mat_1.json";
 import SarkData from "./data/sarka.json";
 import JachData from "./data/jachym.json";
 import ZdenData from "./data/zdeny.json";
