@@ -51,6 +51,10 @@ hr {
   box-shadow: 1px 3px 5px #000;
   position:relative;
   top: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .course:hover {
@@ -65,7 +69,7 @@ hr {
 
 .note {
   position: absolute;
-  bottom: -25%;
+  bottom: -0.5rem;
   right: 0;
 }
 
@@ -78,6 +82,7 @@ hr {
 .classes {
   position: relative;
   top: 0;
+  flex-grow: 1;
 }
 
 .pointer:hover {
@@ -91,6 +96,15 @@ hr {
   transition: all .3s ease;
   cursor:pointer;
   opacity: .8;
+}
+
+.classWrapper {
+  height: 700px;
+  gap: 1em;
+}
+
+.day-text {
+  width: 40px;
 }
 
 @media screen and (max-width: 1200px)
