@@ -5,18 +5,21 @@ import Wrapper from "./Wrapper";
 import Header from "./Header";
 
 function App({_db}) {
+  const nullArr = [[], [], [], [], []];
   const [db, setDb] = useState(_db);
   const [people, setPeople] = useState([]);
   const [favorite, setFavorite] = useState(localStorage.getItem("favorite"));
   const [victim, setVictim] = useState(localStorage.getItem("favorite"));
-  const nullArr = [[], [], [], [], []];
+  const [dataSource, setDataSource] = useState(nullArr);
+  const [favData, setFavData] = useState();
 
   useEffect(() => {
     updatePeople();
   }, [])
 
   useEffect(() => {
-    localStorage.setItem("favorite", favorite);
+    localStorage.setItem("favorite", favorite);  
+    console.log(favData, dataSource);
   }, [favorite])
 
   const updatePeople = async () => {
@@ -24,6 +27,7 @@ function App({_db}) {
     const peopleCollection = collection(db, 'users');
     const peopleDocs = await getDocs(peopleCollection);
     setPeople([]);
+    
     peopleDocs.forEach((person) => {
       person = person.data();
       people.push({
@@ -31,16 +35,14 @@ function App({_db}) {
         "data": require(`./data/${person.data}.json`)
       });
     });
+    
     setPeople(people);
+
+    const favPerson = localStorage.getItem("favorite");
+    const perObj = people.find((per) => per.name === favPerson);
+    setDataSource(perObj.data);
   }
-
-  let favData = people.find((per) => per.name === favorite);
-  if (!favData)
-    favData = nullArr;
-  else
-    favData = favData.data;
-  const [dataSource, setDataSource] = useState(favData);
-
+ 
   const unsetFavorite = () => {
     setFavorite(null);
   }
