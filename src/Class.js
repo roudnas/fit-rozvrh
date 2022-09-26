@@ -25,7 +25,7 @@ const Class = ({ dims, obj, similar }) => {
 				width: width,
 				marginLeft: marL,
 				top: `${(100 / obj.levelCount) * (obj.level - 1)}%`,
-				height: `${100 / obj.levelCount}%`,
+				height: `${100 / obj.levelCount - 4}%`,
 
 				...(displayInline && {
 					flexDirection: "row",

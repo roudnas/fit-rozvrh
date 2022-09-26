@@ -37,7 +37,10 @@ function App({_db}) {
     });
     
     setPeople(people);
+    setDataByFav();
+  }
 
+  const setDataByFav = () => {
     const favPerson = localStorage.getItem("favorite");
     const perObj = people.find((per) => per.name === favPerson);
     setDataSource(perObj.data);
@@ -48,10 +51,10 @@ function App({_db}) {
   }
 
   return (
-    <div className="App bg-dark py-2 px-2 text-light text-center">
+    <div className="App bg-dark py-3 px-4 text-light text-center">
       <Header
         dataSource={dataSource}
-        favData={favData}
+        setDataByFav={setDataByFav}
         victim={victim}
         favorite={favorite}
         setFavorite={setFavorite}

@@ -37,7 +37,7 @@ const Classes = ({ classArr, data, dayIndex, dims }) => {
 
 	return (
 		<>
-			<div className="classes text-dark d-flex flex-row">
+			<div className="classes pb-2 text-dark d-flex flex-row">
 				<h5 className="day-text text-light h-index my-auto">
 					{getDayName(dayIndex)}
 				</h5>

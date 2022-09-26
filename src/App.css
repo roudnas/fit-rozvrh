@@ -47,6 +47,22 @@ hr {
   border: none !important;
 }
 
+.classes {
+  border-bottom: 1px solid rgba(0,0,0,.3);
+}
+
+.bg-second {
+  background-color: #DFB479;
+}
+
+.bg-darker {
+  background-color: #0d1620;
+}
+
+.header {
+  box-shadow: 1px 3px 5px #000;
+}
+
 .course {
   box-shadow: 1px 3px 5px #000;
   position:relative;
@@ -69,8 +85,8 @@ hr {
 
 .note {
   position: absolute;
-  bottom: -0.5rem;
-  right: 0;
+  top: -0.25rem;
+  right: -0.25rem;
 }
 
 .abs {

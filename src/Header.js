@@ -5,7 +5,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 const Header = ({
   dataSource,
-  favData,
+  setDataByFav,
   victim,
   favorite,
   setFavorite,
@@ -41,13 +41,12 @@ const Header = ({
 
 
   return (
-    <article className="d-flex px-4 py-2 nav-main align-items-center justify-content-between">
+    <article className="d-flex px-4 py-2 bg-second text-dark rounded nav-main align-items-center justify-content-between">
       <section className="d-flex flex-row align-items-center">
-        <h2 className="pointer me-2"
-          onClick={() => {
-            setDataSource(favData);
+        <img className="pointer me-2" onClick={() => {
+            setDataByFav();
             setVictim(favorite);
-          }}>FitZvrh</h2>
+          }} src={process.env.PUBLIC_URL + "/logo.png"} width={125} />
         <Badge bg="black">{evenOrOdd} week</Badge>
       </section>
       <section className="d-flex flex-row align-items-center">
