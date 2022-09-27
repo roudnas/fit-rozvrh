@@ -1,16 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Hour from './Hour';
 import Classes from "./Classes";
 
 
-const Wrapper = ({dataSource, data}) => {
+const Wrapper = ({ dataSource, data }) => {
 	const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 	const classesData = dataSource;
 
 	useEffect(() => {
 		const listener = () => {
-			if (getWindowDimensions().width > 1200)
-				setWindowDimensions(getWindowDimensions());
+			setWindowDimensions(getWindowDimensions());
 		}
 		window.addEventListener("resize", listener);
 		return () => {
@@ -51,7 +50,7 @@ const Wrapper = ({dataSource, data}) => {
 }
 
 const getWindowDimensions = () => {
-	const {innerWidth: width, innerHeight: height} = window;
+	const { innerWidth: width, innerHeight: height } = window;
 	return {
 		width,
 		height
