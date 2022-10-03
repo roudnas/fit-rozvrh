@@ -2,6 +2,9 @@
 #env
 *.env
 
+#data dumps
+/data_old
+
 # dependencies
 /node_modules
 /.pnp
