@@ -13,8 +13,6 @@ const Classes = ({ classArr, data, dayIndex, dims }) => {
 			let currentLevel = 1;
 
 			returnArr.forEach((sortedLecture) => {
-				console.log(lecture, sortedLecture, classArr, returnArr);
-
 				if (
 					areIntervalsOverlapping(
 						intervalFromLesson(lecture),

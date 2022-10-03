@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import Hour from './Hour';
 import Classes from "./Classes";
+import Spinner from 'react-bootstrap/Spinner';
 
 
-const Wrapper = ({dataSource, data}) => {
+const Wrapper = ({dataSource, data, loading}) => {
 	const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 	const classesData = dataSource;
 
@@ -40,6 +41,11 @@ const Wrapper = ({dataSource, data}) => {
 				<div className={hoursStyle}>
 					{hours}
 				</div>
+
+				{ loading ? (
+					<div class="spinner"><img src={process.env.PUBLIC_URL + "/spinner2.gif"} height="450"/></div>
+				): <></> }
+
 				{classesData.length && classesData[0].length ? (
 					classesData.map((classArr, i) => (
 						<Classes classArr={classArr} data={data} key={i} dayIndex={i} dims={windowDimensions} />
