@@ -8,6 +8,9 @@
   cursor: pointer;
   opacity: 0.7;
 }
+.spinner {
+  min-height: 75%;
+}
 p {
   margin: 0 !important;
 }

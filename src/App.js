@@ -1,6 +1,6 @@
 import "./App.css";
 import {useState, useEffect} from "react";
-import { getFirestore, collection, getDocs, doc } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, getDoc, doc, where, addDoc, query } from 'firebase/firestore/lite';
 import Wrapper from "./Wrapper";
 import Header from "./Header";
 
@@ -12,6 +12,7 @@ function App({_db}) {
   const [victim, setVictim] = useState(localStorage.getItem("favorite"));
   const [dataSource, setDataSource] = useState(nullArr);
   const [favData, setFavData] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     updatePeople();
@@ -26,24 +27,57 @@ function App({_db}) {
     const peopleRef = doc(db, "users", "SF");
     const peopleCollection = collection(db, 'users');
     const peopleDocs = await getDocs(peopleCollection);
+
     setPeople([]);
     
-    peopleDocs.forEach((person) => {
-      person = person.data();
-      people.push({
+    for (const per of peopleDocs.docs) {
+      const pid = per.id;
+      const person = per.data();
+      const pData = [[],[],[],[],[]];
+
+      const q = query(
+        collection(db, 'classes'), 
+        where(
+          'user', 
+          '==', 
+          pid
+        )
+      );
+      const qs = await getDocs(q);
+
+      qs.forEach((q) => {
+        q = q.data();
+        pData[q.day][q.order] = q; 
+      })
+
+      await people.push({
+        "id": pid,
         "name": person.name,
-        "data": require(`./data/${person.data}.json`)
+        "data": pData 
       });
-    });
-    
+    }
+
     setPeople(people);
     setDataByFav();
+    setLoading(false);
   }
+
+    /*people.forEach(async (p) => {
+      p.data.forEach((d, i) => {
+        d.forEach(async(c, j) => {
+          c.user = p.id;
+          c.day = i;
+          c.order = j;
+          await addDoc(collection(db, 'classes'), c)
+        })
+      })
+    })*/
 
   const setDataByFav = () => {
     const favPerson = localStorage.getItem("favorite");
     const perObj = people.find((per) => per.name === favPerson);
-    setDataSource(perObj.data);
+    if ( perObj )
+      setDataSource(perObj.data);
   }
  
   const unsetFavorite = () => {
@@ -63,7 +97,12 @@ function App({_db}) {
         setDataSource={setDataSource}
         unsetFavorite={unsetFavorite}
       />
-      <Wrapper dataSource={dataSource} data={people} />
+
+      <Wrapper 
+        dataSource={dataSource} 
+        data={people} 
+        loading={loading}
+      />
     </div>
   );
 }
