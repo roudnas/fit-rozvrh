@@ -1,112 +1,113 @@
 import "./App.css";
-import { useState, useEffect } from "react";
-import { getFirestore, collection, getDocs, getDoc, doc, where, addDoc, query } from 'firebase/firestore/lite';
+import {useState, useEffect} from "react";
+import {getFirestore, collection, getDocs, getDoc, doc, where, addDoc, query} from 'firebase/firestore/lite';
 import Wrapper from "./Wrapper";
 import Header from "./Header";
 
 export const APP_PADDING_X = 20;
 
-function App({ _db }) {
-  const nullArr = [[], [], [], [], []];
-  const [db, setDb] = useState(_db);
-  const [people, setPeople] = useState([]);
-  const [favorite, setFavorite] = useState(localStorage.getItem("favorite"));
-  const [victim, setVictim] = useState(localStorage.getItem("favorite"));
-  const [dataSource, setDataSource] = useState(nullArr);
-  const [favData, setFavData] = useState();
-  const [loading, setLoading] = useState(true);
+function App({_db}) {
+    const nullArr = [[], [], [], [], []];
+    const [db, setDb] = useState(_db);
+    const [people, setPeople] = useState([]);
+    const [favorite, setFavorite] = useState(localStorage.getItem("favorite"));
+    const [victim, setVictim] = useState(localStorage.getItem("favorite"));
+    const [dataSource, setDataSource] = useState(nullArr);
+    const [favData, setFavData] = useState();
+    const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    updatePeople();
-  }, [])
+    useEffect(() => {
+        updatePeople();
+    }, [])
 
-  useEffect(() => {
-    localStorage.setItem("favorite", favorite);
-    console.log(favData, dataSource);
-  }, [favorite])
+    useEffect(() => {
+        localStorage.setItem("favorite", favorite);
+        console.log(favData, dataSource);
+    }, [favorite])
 
-  const updatePeople = async () => {
-    const peopleRef = doc(db, "users", "SF");
-    const peopleCollection = collection(db, 'users');
-    const peopleDocs = await getDocs(peopleCollection);
+    const updatePeople = async () => {
+        console.log("call");
 
-    setPeople([]);
+        const peopleCollection = collection(db, 'users');
+        const peopleDocs = await getDocs(peopleCollection);
 
-    await Promise.all(peopleDocs.docs.map(async per => {
-      const pid = per.id;
-      const person = per.data();
-      const pData = [[], [], [], [], []];
+        setPeople([]);
 
-      const q = query(
-        collection(db, 'classes'),
-        where(
-          'user',
-          '==',
-          pid
-        )
-      );
-      const qs = await getDocs(q);
+        await Promise.all(peopleDocs.docs.map(async per => {
+            const pid = per.id;
+            const person = per.data();
+            const pData = [[], [], [], [], []];
 
-      qs.forEach((q) => {
-        q = q.data();
-        pData[q.day][q.order] = q;
+            const q = query(
+                collection(db, 'classes'),
+                where(
+                    'user',
+                    '==',
+                    pid
+                )
+            );
+            const qs = await getDocs(q);
+
+            qs.forEach((q) => {
+                q = q.data();
+                pData[q.day][q.order] = q;
+            })
+
+            people.push({
+                "id": pid,
+                "name": person.name,
+                "data": pData
+            });
+        }))
+
+        setPeople(people);
+        setDataByFav();
+        setLoading(false);
+    }
+
+    /*people.forEach(async (p) => {
+      p.data.forEach((d, i) => {
+        d.forEach(async(c, j) => {
+          c.user = p.id;
+          c.day = i;
+          c.order = j;
+          await addDoc(collection(db, 'classes'), c)
+        })
       })
+    })*/
 
-      people.push({
-        "id": pid,
-        "name": person.name,
-        "data": pData
-      });
-    }))
+    const setDataByFav = () => {
+        const favPerson = localStorage.getItem("favorite");
+        const perObj = people.find((per) => per.name === favPerson);
+        if (perObj)
+            setDataSource(perObj.data);
+    }
 
-    setPeople(people);
-    setDataByFav();
-    setLoading(false);
-  }
+    const unsetFavorite = () => {
+        setFavorite(null);
+    }
 
-  /*people.forEach(async (p) => {
-    p.data.forEach((d, i) => {
-      d.forEach(async(c, j) => {
-        c.user = p.id;
-        c.day = i;
-        c.order = j;
-        await addDoc(collection(db, 'classes'), c)
-      })
-    })
-  })*/
+    return (
+        <div className="App bg-dark py-3 text-light text-center">
+            <Header
+                dataSource={dataSource}
+                setDataByFav={setDataByFav}
+                victim={victim}
+                favorite={favorite}
+                setFavorite={setFavorite}
+                people={people}
+                setVictim={setVictim}
+                setDataSource={setDataSource}
+                unsetFavorite={unsetFavorite}
+            />
 
-  const setDataByFav = () => {
-    const favPerson = localStorage.getItem("favorite");
-    const perObj = people.find((per) => per.name === favPerson);
-    if (perObj)
-      setDataSource(perObj.data);
-  }
-
-  const unsetFavorite = () => {
-    setFavorite(null);
-  }
-
-  return (
-    <div className="App bg-dark py-3 text-light text-center">
-      <Header
-        dataSource={dataSource}
-        setDataByFav={setDataByFav}
-        victim={victim}
-        favorite={favorite}
-        setFavorite={setFavorite}
-        people={people}
-        setVictim={setVictim}
-        setDataSource={setDataSource}
-        unsetFavorite={unsetFavorite}
-      />
-
-      <Wrapper
-        dataSource={dataSource}
-        data={people}
-        loading={loading}
-      />
-    </div>
-  );
+            <Wrapper
+                dataSource={dataSource}
+                data={people}
+                loading={loading}
+            />
+        </div>
+    );
 }
 
 export default App;

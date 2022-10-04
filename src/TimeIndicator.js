@@ -13,8 +13,6 @@ export function TimeIndicator({ dims }) {
     const fullW = (dims.width - APP_PADDING_X * 2) / 14;
     const marL = (sT - 7) * fullW + TIME_OFFSET_PX;
 
-    console.log(dims.width, fullW, currentTime, sT, marL);
-
     return (
         <div className='time-indicator' style={{ marginLeft: marL }}>
             <div className='time-indicator-pin' />

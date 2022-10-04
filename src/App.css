@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap");
+
+:root {
+  --bg-tut: #aed581;
+  --bg-lab: #4FC3F7;
+  --bg-lec: #FFB74D;
+  --header: #DFB479;
+}
+
 .App {
   font-family: "Rubik", sans-serif !important;
   min-height: 100vh;
@@ -39,15 +47,15 @@ hr {
 }
 
 .bg-lab {
-  background-color: #4FC3F7;
+  background-color: var(--bg-lab);
 }
 
 .bg-tut {
-  background-color: #AED581;
+  background-color: var(--bg-tut);
 }
 
 .bg-lec {
-  background-color: #FFB74D;
+  background-color: var(--bg-lec);
 }
 
 .bg-black {
@@ -60,7 +68,7 @@ hr {
 }
 
 .bg-second {
-  background-color: #DFB479;
+  background-color: var(--header);
 }
 
 .bg-darker {

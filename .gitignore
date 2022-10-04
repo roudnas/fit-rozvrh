@@ -2,6 +2,9 @@
 #env
 *.env
 
+#idea
+.idea
+
 #data dumps
 /data_old
 
