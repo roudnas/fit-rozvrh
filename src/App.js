@@ -4,6 +4,8 @@ import { getFirestore, collection, getDocs, getDoc, doc, where, addDoc, query } 
 import Wrapper from "./Wrapper";
 import Header from "./Header";
 
+export const APP_PADDING_X = 20;
+
 function App({ _db }) {
   const nullArr = [[], [], [], [], []];
   const [db, setDb] = useState(_db);
@@ -85,7 +87,7 @@ function App({ _db }) {
   }
 
   return (
-    <div className="App bg-dark py-3 px-4 text-light text-center">
+    <div className="App bg-dark py-3 text-light text-center">
       <Header
         dataSource={dataSource}
         setDataByFav={setDataByFav}

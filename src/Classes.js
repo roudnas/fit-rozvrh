@@ -1,11 +1,13 @@
 import React, { useMemo } from "react";
-import { areIntervalsOverlapping } from "date-fns";
+import { areIntervalsOverlapping, getDay } from "date-fns";
 
 import Class from "./Class";
 
 import { intervalFromLesson } from "./utils/intervalFromLesson";
+import { TimeIndicator } from "./TimeIndicator";
 
 const Classes = ({ classArr, data, dayIndex, dims }) => {
+
 	const classArrWithCollisions = useMemo(() => {
 		const returnArr = [];
 
@@ -39,6 +41,7 @@ const Classes = ({ classArr, data, dayIndex, dims }) => {
 				<h5 className="day-text text-light h-index my-auto">
 					{getDayName(dayIndex)}
 				</h5>
+				{dayIndex + 1 === getDay(new Date()) && <TimeIndicator dims={dims} />}
 				{classArrWithCollisions.map((course, i) => {
 					return <Class key={i} dims={dims} obj={course} />;
 				})}

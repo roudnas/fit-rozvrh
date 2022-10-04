@@ -5,6 +5,8 @@
   transition: all 0.5s ease;
   display: flex;
   flex-direction: column;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .hodina:hover {
   cursor: pointer;
@@ -129,6 +131,26 @@ hr {
 
 .day-text {
   width: 40px;
+}
+
+.time-indicator {
+  position: absolute;
+  top: -20px;
+  height: calc(100% + 20px);
+  background-color: crimson;
+  width: 4px;
+  border-radius: 4px;
+  padding: 10px 0 10px 0;
+}
+
+.time-indicator-pin {
+  position: absolute;
+  top: 0;
+  left: -4px;
+  height: 12px;
+  width: 12px;
+  border-radius: 6px;
+  background-color: crimson;
 }
 
 @media screen and (max-width: 1200px)

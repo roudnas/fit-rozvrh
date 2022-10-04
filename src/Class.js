@@ -1,12 +1,17 @@
 import React from "react";
 
+import { APP_PADDING_X } from "./App";
+
+export const DAY_TEXT_WIDTH = 40;
+export const TIME_OFFSET_PX = 25;
+
 const Class = ({ dims, obj, similar }) => {
 	if (dims.width < 1200) dims.width = 1200;
 
-	const fullW = dims.width / 14;
+	const fullW = (dims.width - APP_PADDING_X * 2) / 14;
 	const sT = parseTime(obj.startTime);
 	const eT = parseTime(obj.endTime);
-	let marL = (sT - 7) * fullW - 40;
+	let marL = (sT - 7) * fullW - DAY_TEXT_WIDTH + TIME_OFFSET_PX;
 
 	if (obj.prevEnd.length) {
 		const prevT = parseTime(obj.prevEnd);
