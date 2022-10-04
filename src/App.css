@@ -3,6 +3,8 @@
   font-family: "Rubik", sans-serif !important;
   min-height: 100vh;
   transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
 }
 .hodina:hover {
   cursor: pointer;
@@ -30,7 +32,8 @@ hr {
 }
 
 .main {
-  min-height: 90vh;
+  flex-grow: 1;
+  display: flex;
 }
 
 .bg-lab {
@@ -118,7 +121,9 @@ hr {
 }
 
 .classWrapper {
-  height: 700px;
+  flex: 1;
+  min-height: 700px;
+  width: 100%;
   gap: 1em;
 }
 
