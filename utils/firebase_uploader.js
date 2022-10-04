@@ -1,7 +1,11 @@
-const fApp = require("firebase/app");
-const firestore = require("firebase/firestore/lite");
+const {initializeApp} = require("firebase/app");
+const {getFirestore, addDoc, collection} = require("firebase/firestore/lite");
 const process = require('process');
-require('dotenv').config()
+const chalk = require('chalk');
+const path = require("path");
+
+
+require('dotenv').config({ path: path.resolve(`${__dirname}/../.env`)})
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -14,30 +18,35 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = fApp.initializeApp(firebaseConfig);
-const db = firestore.getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 const data = require(process.argv[3]);
 
 (async () => {
   //create person
   try {
-    await firestore.addDoc(firestore.collection(db, 'users'), {
-        name: process.argv[2]
+    const ref = await addDoc(collection(db, "users"), {
+      name: process.argv[2]
+    })
+
+    console.log(chalk.green(`Added ${process.argv[2]} (${ref.id})`));
+
+    // supply data
+    data.forEach((d, i) => {
+      d.forEach(async(c, j) => {
+        c.user = ref.id;
+        c.day = i;
+        c.order = j;
+        await addDoc(collection(db, 'classes'), c)
       })
-    } catch (e) {
-      console.error(e);
+    })
+
+    console.log(chalk.green('Added data as well!'));
+
+  } catch (e) {
+      console.error(chalk.red(e));
     }
 })()
 
 
 
-// supply data
-data.forEach((d, i) => {
-    d.forEach(async(c, j) => {
-      c.user = "karel12";
-      c.day = i;
-      c.order = j;
-      //await firestore.addDoc(collection(db, 'classes'), c)
-      console.log(c);
-    })
-})
