@@ -3,7 +3,7 @@ import {areIntervalsOverlapping, getDay} from "date-fns";
 
 import Class from "./Class";
 
-import {intervalFromLesson} from "./utils/intervalFromLesson";
+import {intervalFromLesson} from "../utils/intervalFromLesson";
 import {TimeIndicator} from "./TimeIndicator";
 
 const Classes = ({classArr, data, dayIndex, dims}) => {

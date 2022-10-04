@@ -1,6 +1,6 @@
 import React from "react";
 
-import {APP_PADDING_X} from "./App";
+import {APP_PADDING_X} from "../App";
 
 export const DAY_TEXT_WIDTH = 40;
 export const TIME_OFFSET_PX = 25;

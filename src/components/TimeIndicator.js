@@ -1,7 +1,7 @@
-import { APP_PADDING_X } from './App';
-import { TIME_OFFSET_PX } from './Class';
+import {APP_PADDING_X} from '../App';
+import {TIME_OFFSET_PX} from './Class';
 
-export function TimeIndicator({ dims }) {
+export function TimeIndicator({dims}) {
     const currentTime = new Date();
     const sT = currentTime.getHours() + currentTime.getMinutes() / 60;
 
@@ -14,8 +14,8 @@ export function TimeIndicator({ dims }) {
     const marL = (sT - 7) * fullW + TIME_OFFSET_PX;
 
     return (
-        <div className='time-indicator' style={{ marginLeft: marL }}>
-            <div className='time-indicator-pin' />
+        <div className='time-indicator' style={{marginLeft: marL}}>
+            <div className='time-indicator-pin'/>
         </div>
     )
 }

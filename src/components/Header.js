@@ -12,8 +12,6 @@ export const DEFAULT_THEME = {
 };
 
 const Header = ({
-    dataSource,
-    setDataByFav,
     victim,
     favorite,
     setFavorite,
@@ -75,7 +73,6 @@ const Header = ({
             className="d-flex px-4 py-2 bg-second text-dark rounded nav-main align-items-center justify-content-between">
             <section className="d-flex flex-row align-items-center">
                 <img className="pointer me-2" onClick={() => {
-                    setDataByFav();
                     setVictim(favorite);
                 }} src={process.env.PUBLIC_URL + "/logo.png"} width={125}/>
                 <Badge bg="black">{evenOrOdd} week</Badge>
