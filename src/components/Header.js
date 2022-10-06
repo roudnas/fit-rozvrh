@@ -47,7 +47,7 @@ const Header = ({
     }
 
     const diffWeeks = Math.floor(1 + (dateData.now - dateData.startOfTheSemester) / 1001 / 60 / 60 / 24 / 7);
-    const evenOrOdd = getWeek(dateData.now) ? "even" : "odd";
+    const evenOrOdd = getWeek(dateData.now, { weekStartsOn: 1 }) ? "even" : "odd";
 
     const getStarIcon = (victim, favorite) => {
         return (victim === favorite)
