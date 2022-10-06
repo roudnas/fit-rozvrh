@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import {AiTwotoneStar, AiOutlineStar, AiFillSetting} from 'react-icons/ai';
+import React, { useEffect, useState } from 'react';
+import { AiTwotoneStar, AiOutlineStar, AiFillSetting } from 'react-icons/ai';
 import Badge from 'react-bootstrap/Badge';
 import Dropdown from 'react-bootstrap/Dropdown';
 import ColorInputGroup from "./ColorInputGroup";
+import { getWeek } from 'date-fns';
 
 export const DEFAULT_THEME = {
     header: "#DFB479",
@@ -35,27 +36,27 @@ const Header = ({
 
     const dateData = {
         now: Date.parse(new Date()),
-        startOfTheSemester: Date.parse("2022-02-14")
+        startOfTheSemester: Date.parse("2022-09-19")
     }
 
     const setThemeById = (id, val) => {
-        const t = {...theme};
+        const t = { ...theme };
         t[id] = val;
         console.log(t);
         setTheme(t);
     }
 
     const diffWeeks = Math.floor(1 + (dateData.now - dateData.startOfTheSemester) / 1001 / 60 / 60 / 24 / 7);
-    const evenOrOdd = ((diffWeeks % 2) === 0) ? "even" : "odd";
+    const evenOrOdd = getWeek(dateData.now) ? "even" : "odd";
 
     const getStarIcon = (victim, favorite) => {
         return (victim === favorite)
             ? <AiTwotoneStar size={15} className="star" onClick={() => {
                 unsetFavorite()
-            }}/>
+            }} />
             : <AiOutlineStar className="star" onClick={() => {
                 setFavorite(victim)
-            }}/>;
+            }} />;
     }
 
     const victimBadge = (victim && victim !== "null")
@@ -74,8 +75,8 @@ const Header = ({
             <section className="d-flex flex-row align-items-center">
                 <img className="pointer me-2" onClick={() => {
                     setVictim(favorite);
-                }} src={process.env.PUBLIC_URL + "/logo.png"} width={125}/>
-                <Badge bg="black">{evenOrOdd} week</Badge>
+                }} src={process.env.PUBLIC_URL + "/logo.png"} width={125} />
+                <Badge bg="black">{evenOrOdd} week (no. {diffWeeks})</Badge>
             </section>
             <section className="d-flex flex-row align-items-center">
                 {victimBadge}
@@ -94,15 +95,15 @@ const Header = ({
                 </Dropdown>
                 <Dropdown>
                     <Dropdown.Toggle className="text-bold bg-black" variant="secondary" id="dropdown-basic">
-                        <AiFillSetting/>
+                        <AiFillSetting />
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="p-2">
                         <p>Theme</p>
-                        <hr className="m-0"/>
-                        <ColorInputGroup label={"Header"} id={"header"} value={theme.header} setTheme={setThemeById}/>
-                        <ColorInputGroup label={"Lec"} id={"lec"} value={theme.lec} setTheme={setThemeById}/>
-                        <ColorInputGroup label={"Tut"} id={"tut"} value={theme.tut} setTheme={setThemeById}/>
-                        <ColorInputGroup label={"Lab"} id={"lab"} value={theme.lab} setTheme={setThemeById}/>
+                        <hr className="m-0" />
+                        <ColorInputGroup label={"Header"} id={"header"} value={theme.header} setTheme={setThemeById} />
+                        <ColorInputGroup label={"Lec"} id={"lec"} value={theme.lec} setTheme={setThemeById} />
+                        <ColorInputGroup label={"Tut"} id={"tut"} value={theme.tut} setTheme={setThemeById} />
+                        <ColorInputGroup label={"Lab"} id={"lab"} value={theme.lab} setTheme={setThemeById} />
                         <Badge className={"hodina"} bg={"black"} onClick={() => {
                             setTheme(DEFAULT_THEME);
                         }}>Reset</Badge>
