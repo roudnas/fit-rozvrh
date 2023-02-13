@@ -227,5 +227,6 @@ img.pointer:hover {
   }
   .course h6 {
     font-size: 0.8rem !important;
+    gap: 0.5rem;
   }
 }
