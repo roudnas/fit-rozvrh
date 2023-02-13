@@ -17,7 +17,7 @@ export function VictimDropdown({ people, setVictimId }: Props) {
       >
         VICTIM
       </Dropdown.Toggle>
-      <Dropdown.Menu>
+      <Dropdown.Menu renderOnMount>
         {people.map((person, i) => (
           <Dropdown.Item
             key={i}

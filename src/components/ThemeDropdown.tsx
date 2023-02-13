@@ -61,7 +61,7 @@ export function ThemeDropdown() {
       >
         <AiFillSetting />
       </Dropdown.Toggle>
-      <Dropdown.Menu className="p-2">
+      <Dropdown.Menu renderOnMount className="p-2">
         <p>Theme</p>
         <hr className="m-0" />
         <div className="my-2">
