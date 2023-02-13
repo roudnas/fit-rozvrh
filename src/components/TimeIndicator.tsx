@@ -5,8 +5,7 @@ import {
   TIMETABLE_PIN_START_HOUR,
   TIMETABLE_START_HOUR,
 } from '../App';
-// TODO: TIME_OFFSET_PX should probably come from elsewhere
-import { TIME_OFFSET_PX } from './Lesson';
+import { TIME_OFFSET_PX } from './Hour';
 import { HourWidthContext } from './TimetableWrapper';
 
 export const TIME_INDICATOR_REFRESH_MS = 60000;

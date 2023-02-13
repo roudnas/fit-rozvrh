@@ -1,11 +1,9 @@
 import { useContext } from 'react';
 
 import { TIMETABLE_START_HOUR } from '../App';
+import { TIME_OFFSET_PX } from './Hour';
 import { ContextualizedLesson } from './Lessons';
 import { HourWidthContext } from './TimetableWrapper';
-
-export const DAY_TEXT_WIDTH = 40;
-export const TIME_OFFSET_PX = 25;
 
 export const SEPARATOR_WHITESPACE_PERCENTAGE = 4;
 
@@ -37,11 +35,7 @@ export const Lesson = ({ dataWithCollisions }: Props) => {
     ? parseTimeToHours(dataWithCollisions.prevEndTime)
     : null;
 
-  // TODO: This could be tidied up...
-  let marL =
-    (startTime - TIMETABLE_START_HOUR) * hourWidthPx -
-    DAY_TEXT_WIDTH +
-    TIME_OFFSET_PX;
+  let marL = (startTime - TIMETABLE_START_HOUR) * hourWidthPx - TIME_OFFSET_PX;
 
   if (prevEndTime) {
     marL = (startTime - prevEndTime) * hourWidthPx;

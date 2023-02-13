@@ -165,7 +165,7 @@ img.pointer:hover {
   flex: 1;
   min-height: 700px;
   width: 100%;
-  gap: 1em;
+  gap: 0.5rem;
 }
 
 .day-text {
@@ -173,9 +173,10 @@ img.pointer:hover {
 }
 
 .time-indicator-wrapper {
+  transition: all var(--transition-duration) ease;
   position: absolute;
-  top: -20px;
-  height: calc(100% + 20px);
+  top: -10px;
+  height: calc(100% + 10px);
   background-color: crimson;
   width: 4px;
   border-radius: 4px;

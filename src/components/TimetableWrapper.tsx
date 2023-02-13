@@ -73,7 +73,7 @@ export const TimetableWrapper = ({ timetable, isLoading }: Props) => {
               <img src="/spinner2.gif" height="450" />
             </div>
           )) || (
-            <div className="dayLessonsWrapper h-100">
+            <div className="dayLessonsWrapper h-100 pt-3">
               {contextualizedTimetable.map((dayLessons, day) => (
                 <Lessons lessons={dayLessons} key={day} dayIndex={day} />
               ))}
