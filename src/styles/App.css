@@ -5,12 +5,17 @@
   --bg-lab: #4fc3f7;
   --bg-lec: #ffb74d;
   --header: #dfb479;
+
+  --transition-duration: 0.5s;
+}
+
+body {
+  background-color: var(--bs-body-color);
 }
 
 .App {
   font-family: 'Rubik', sans-serif !important;
   min-height: 100vh;
-  transition: all 0.5s ease;
   display: flex;
   flex-direction: column;
   padding-left: 20px;
@@ -63,12 +68,12 @@ hr {
   border: none !important;
 }
 
-.lessons {
+.lessons:not(:last-child) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .bg-second {
-  transition: all 0.3s ease;
+  transition: all var(--transition-duration) ease;
   background-color: var(--header);
 }
 
@@ -81,7 +86,7 @@ hr {
 }
 
 .lesson {
-  transition: all 0.3s ease;
+  transition: all var(--transition-duration) ease;
   box-shadow: 1px 3px 5px #000;
   position: relative;
   top: 0;
@@ -89,11 +94,25 @@ hr {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+
+  animation: slide-up var(--transition-duration) ease;
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .lesson:hover {
   opacity: 0.8;
   cursor: pointer;
+  transform: scale(1);
 }
 
 .text-bold {
@@ -118,14 +137,22 @@ hr {
   flex-grow: 1;
 }
 
+.pointer {
+  transform: scale(1);
+  transition: all var(--transition-duration) ease;
+}
+
 .pointer:hover {
   cursor: pointer;
-  opacity: 0.8;
+  opacity: 0.7;
+}
+
+img.pointer:hover {
   transform: scale(0.95);
 }
 
 .star {
-  transition: all 0.3s ease;
+  transition: all var(--transition-duration) ease;
   width: 1.5rem;
 }
 
@@ -170,7 +197,14 @@ hr {
 }
 
 .nav-main {
-  transition: all 0.3s ease;
+  transition: all var(--transition-duration) ease;
+}
+
+.dayLessonsWrapper {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+
+  overflow: hidden;
 }
 
 @media screen and (max-width: 1200px) {

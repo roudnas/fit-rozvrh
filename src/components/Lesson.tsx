@@ -4,7 +4,6 @@ import { TIMETABLE_START_HOUR } from '../App';
 import { ContextualizedLesson } from './Lessons';
 import { HourWidthContext } from './TimetableWrapper';
 
-// TODO: Figure out what exactly these 2 values represent...
 export const DAY_TEXT_WIDTH = 40;
 export const TIME_OFFSET_PX = 25;
 

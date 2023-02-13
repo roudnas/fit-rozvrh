@@ -64,18 +64,21 @@ export const TimetableWrapper = ({ timetable, isLoading }: Props) => {
   return (
     <HourWidthContext.Provider value={hourWidthPx}>
       <div className="bg-dark wrapperino w-100 main rounded">
-        <section className="lessonWrapper pb-3 pt-1 main d-flex flex-column justify-content-between">
-          <div className="hours header bg-second w-100 rounded text-dark d-flex flex-row justify-content-around ps-2 mb-3">
+        <section className="lessonWrapper pt-1 main d-flex flex-column justify-content-between">
+          <div className="hours header bg-second w-100 rounded text-dark d-flex flex-row justify-content-around ps-2">
             {hours}
           </div>
           {(isLoading && (
             <div className="spinner">
               <img src="/spinner2.gif" height="450" />
             </div>
-          )) ||
-            contextualizedTimetable.map((dayLessons, day) => (
-              <Lessons lessons={dayLessons} key={day} dayIndex={day} />
-            ))}
+          )) || (
+            <div className="dayLessonsWrapper h-100">
+              {contextualizedTimetable.map((dayLessons, day) => (
+                <Lessons lessons={dayLessons} key={day} dayIndex={day} />
+              ))}
+            </div>
+          )}
         </section>
       </div>
     </HourWidthContext.Provider>

@@ -87,7 +87,7 @@ export function ThemeDropdown() {
           />
         </div>
         <Badge
-          className={'lesson'}
+          className={'w-100 pointer'}
           bg={'black'}
           onClick={() => {
             setTheme(DEFAULT_THEME);

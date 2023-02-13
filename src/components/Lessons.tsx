@@ -50,7 +50,7 @@ export const Lessons = ({ lessons, dayIndex }: Props) => {
 
   return (
     <>
-      <div className="lessons pb-2 text-dark d-flex flex-row">
+      <div className="lessons py-2 text-dark d-flex flex-row">
         <h5 className="day-text text-light h-index my-auto">
           {getDayName(dayIndex)}
         </h5>
