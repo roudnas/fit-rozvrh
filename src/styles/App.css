@@ -1,14 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
 
 :root {
   --bg-tut: #aed581;
-  --bg-lab: #4FC3F7;
-  --bg-lec: #FFB74D;
-  --header: #DFB479;
+  --bg-lab: #4fc3f7;
+  --bg-lec: #ffb74d;
+  --header: #dfb479;
 }
 
 .App {
-  font-family: "Rubik", sans-serif !important;
+  font-family: 'Rubik', sans-serif !important;
   min-height: 100vh;
   transition: all 0.5s ease;
   display: flex;
@@ -16,9 +16,9 @@
   padding-left: 20px;
   padding-right: 20px;
 }
-.hodina:hover {
+.lesson:hover {
   cursor: pointer;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 .spinner {
   min-height: 75%;
@@ -63,11 +63,12 @@ hr {
   border: none !important;
 }
 
-.classes {
-  border-bottom: 1px solid rgba(0,0,0,.3);
+.lessons {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .bg-second {
+  transition: all 0.3s ease;
   background-color: var(--header);
 }
 
@@ -79,9 +80,10 @@ hr {
   box-shadow: 1px 3px 5px #000;
 }
 
-.course {
+.lesson {
+  transition: all 0.3s ease;
   box-shadow: 1px 3px 5px #000;
-  position:relative;
+  position: relative;
   top: 0;
 
   display: flex;
@@ -89,14 +91,13 @@ hr {
   justify-content: space-around;
 }
 
-.course:hover {
-  transition: all .3s ease;
-  opacity: .8;
+.lesson:hover {
+  opacity: 0.8;
   cursor: pointer;
 }
 
 .text-bold {
-  font-weight: 700!important;
+  font-weight: 700 !important;
 }
 
 .note {
@@ -111,26 +112,29 @@ hr {
   left: 0;
 }
 
-.classes {
+.lessons {
   position: relative;
   top: 0;
   flex-grow: 1;
 }
 
 .pointer:hover {
-  transition: all .7s ease;
   cursor: pointer;
-  opacity: .7;
-  transform: translateX(3px);
+  opacity: 0.8;
+  transform: scale(0.95);
+}
+
+.star {
+  transition: all 0.3s ease;
+  width: 1.5rem;
 }
 
 .star:hover {
-  transition: all .3s ease;
-  cursor:pointer;
-  opacity: .8;
+  cursor: pointer;
+  opacity: 0.8;
 }
 
-.classWrapper {
+.lessonWrapper {
   flex: 1;
   min-height: 700px;
   width: 100%;
@@ -141,7 +145,7 @@ hr {
   width: 40px;
 }
 
-.time-indicator {
+.time-indicator-wrapper {
   position: absolute;
   top: -20px;
   height: calc(100% + 20px);
@@ -161,24 +165,32 @@ hr {
   background-color: crimson;
 }
 
-@media screen and (max-width: 1200px)
-{
+.wrapperino {
+  overflow-x: hidden;
+}
+
+.nav-main {
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 1200px) {
   .wrapperino {
-    overflow-x: scroll!important; 
+    overflow-x: scroll !important;
   }
-  .classes, .classWrapper {
+  .lessons,
+  .lessonWrapper {
     width: 1200px !important;
   }
   .h-index {
     font-size: 1rem !important;
   }
   .hour {
-    font-size: .8rem !important;
+    font-size: 0.8rem !important;
   }
   .nav-main {
     flex-direction: column !important;
   }
   .course h6 {
-    font-size: .8rem !important;
+    font-size: 0.8rem !important;
   }
 }
