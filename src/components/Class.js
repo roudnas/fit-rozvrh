@@ -13,7 +13,7 @@ const Class = ({dims, obj}) => {
     const eT = parseTime(obj.endTime);
     let marL = (sT - 7) * fullW - DAY_TEXT_WIDTH + TIME_OFFSET_PX;
 
-    if (obj.prevEnd.length) {
+    if (obj.prevEnd && obj.prevEnd.length) {
         const prevT = parseTime(obj.prevEnd);
         marL = (sT - prevT) * fullW;
     }

@@ -51,6 +51,7 @@ function App({_db}) {
                 setVictim={setVictim}
                 setDataSource={setDataSource}
                 unsetFavorite={unsetFavorite}
+                setDataByFav={setDataByFav}
             />
 
             <Wrapper

@@ -45,7 +45,7 @@ const Wrapper = ({dataSource, data, loading}) => {
                     <div class="spinner"><img src={process.env.PUBLIC_URL + "/spinner2.gif"} height="450"/></div>
                 ) : <></>}
 
-                {classesData.length && classesData[0].length ? (
+                {classesData.length ? (
                     classesData.map((classArr, i) => (
                         <Classes classArr={classArr} data={data} key={i} dayIndex={i} dims={windowDimensions}/>
                     ))
@@ -66,7 +66,7 @@ const getWindowDimensions = () => {
 const setPreviousData = (classesData) => {
     if (!classesData) return;
 
-    if (classesData.length && classesData[0].length) {
+    if (classesData.length) {
         classesData.forEach((arr) => {
             let prevEnd = "";
             arr.forEach((course) => {

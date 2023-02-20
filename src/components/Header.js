@@ -19,7 +19,8 @@ const Header = ({
     people,
     setVictim,
     setDataSource,
-    unsetFavorite
+    unsetFavorite,
+    setDataByFav
 }) => {
     const [theme, setTheme] = useState(localStorage.getItem("theme")
         ? JSON.parse(localStorage.getItem("theme"))
@@ -75,6 +76,7 @@ const Header = ({
             <section className="d-flex flex-row align-items-center">
                 <img className="pointer me-2" onClick={() => {
                     setVictim(favorite);
+                    setDataByFav();
                 }} src={process.env.PUBLIC_URL + "/logo.png"} width={125} />
                 <Badge bg="black">{evenOrOdd} week (no. {diffWeeks})</Badge>
             </section>
