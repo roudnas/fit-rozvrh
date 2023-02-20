@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 
+import {getOffsetDate} from "../utils/date";
 import {
   TIMETABLE_PIN_END_HOUR,
   TIMETABLE_PIN_START_HOUR,
@@ -11,9 +12,8 @@ import { HourWidthContext } from './TimetableWrapper';
 export const TIME_INDICATOR_REFRESH_MS = 60000;
 
 export function TimeIndicator() {
-  const [currentTime, setCurrentTime] = useState(new Date());
-  const currentTimeHours =
-    currentTime.getHours() + currentTime.getMinutes() / 60;
+  const [currentTime, setCurrentTime] = useState(getOffsetDate());
+  const currentTimeHours = currentTime.hours() + currentTime.minutes() / 60;
 
   const hourWidthPx = useContext(HourWidthContext);
 
@@ -21,7 +21,7 @@ export function TimeIndicator() {
 
   useEffect(() => {
     const minuteRefresher = setInterval(() => {
-      setCurrentTime(new Date());
+      setCurrentTime(getOffsetDate());
     });
 
     return () => clearInterval(minuteRefresher);

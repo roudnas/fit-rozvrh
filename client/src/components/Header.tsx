@@ -1,8 +1,9 @@
-import { differenceInCalendarWeeks, getWeek } from 'date-fns';
 import Badge from 'react-bootstrap/Badge';
 
 import { SEMESTER_START_DATE } from '../App';
 import { PersonData } from '../utils/DBUtil';
+import {getEvenOddWeek, getSemesterWeekNo} from "../utils/date";
+import { PersonData } from '../utils/dbQueries';
 import { ThemeDropdown } from './ThemeDropdown';
 import { VictimBadge } from './VictimBadge';
 import { VictimDropdown } from './VictimDropdown';
@@ -22,12 +23,8 @@ export const Header = ({
   setFavoriteId,
   people,
 }: Props) => {
-  const currentWeekSemesterNo =
-    differenceInCalendarWeeks(new Date(), SEMESTER_START_DATE, {
-      weekStartsOn: 1,
-    }) + 1;
-  const currentWeekEvenOrOdd =
-    getWeek(new Date(), { weekStartsOn: 1 }) % 2 === 0 ? 'even' : 'odd';
+  const currentWeekSemesterNo = getSemesterWeekNo(SEMESTER_START_DATE);
+  const currentWeekEvenOrOdd = getEvenOddWeek();
 
   const victim =
     (victimId && people.find((person) => person.id === victimId)) || null;
