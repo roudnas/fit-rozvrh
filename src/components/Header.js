@@ -37,7 +37,7 @@ const Header = ({
 
     const dateData = {
         now: Date.parse(new Date()),
-        startOfTheSemester: Date.parse("2022-09-19")
+        startOfTheSemester: Date.parse("2023-02-20")
     }
 
     const setThemeById = (id, val) => {
