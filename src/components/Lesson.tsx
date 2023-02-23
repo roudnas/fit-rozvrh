@@ -26,6 +26,7 @@ const parseTimeToHours = (timeStr: string) => {
 
 export const Lesson = ({ dataWithCollisions }: Props) => {
   const hourWidthPx = useContext(HourWidthContext);
+  const intersections = dataWithCollisions.intersections;
 
   if (hourWidthPx === undefined) return null;
 
@@ -46,6 +47,8 @@ export const Lesson = ({ dataWithCollisions }: Props) => {
 
   const displayInline =
     dataWithCollisions.levelCount > MINIMUM_OVERLAP_FOR_INLINE;
+
+  // TODO: implement a way to display the intersections
 
   return (
     <div

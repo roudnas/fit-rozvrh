@@ -28,13 +28,16 @@ export type Timetable = [
   TimetableRecord[],
 ];
 
-export type PersonData = {
+export type PersonInfo = {
   id: string;
   name: string;
-  timetable: Timetable;
-};
+}
 
-export const getPeople = async (db: Firestore) => {
+export type PersonData = {
+  timetable: Timetable;
+} & PersonInfo;
+
+export const getAllPeopleData = async (db: Firestore) => {
   const peopleCollection = collection(db, 'users');
   const peopleDocs = await getDocs(peopleCollection);
   const people: PersonData[] = [];
