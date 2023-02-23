@@ -1,13 +1,15 @@
 import { areIntervalsOverlapping, getDay } from 'date-fns';
 import { useMemo } from 'react';
 
-import { TimetableRecord } from '../utils/dbQueries';
+import { PersonInfo, TimetableRecord } from '../utils/dbQueries';
 import { intervalFromLesson } from '../utils/intervalFromLesson';
 import { CollisionInfo, Lesson } from './Lesson';
 import { TimeIndicator } from './TimeIndicator';
 
 export type ContextualizedLesson = TimetableRecord & {
   prevEndTime?: string;
+  /** Array of people who share the same lesson */
+  intersections?: PersonInfo[];
 };
 
 type Props = {
