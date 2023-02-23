@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react';
 
 import { Header } from './components/Header';
 import { TimetableWrapper } from './components/TimetableWrapper';
-import { getPeople, PersonData, Timetable } from './utils/dbQueries';
+import { getAllPeopleData, PersonData, Timetable } from './utils/dbQueries';
+import { getLessonIntersectionsMap, LessonIntersections } from './utils/intersections';
 
 export const APP_PADDING_X = 20;
 
@@ -26,6 +27,7 @@ const EMPTY_TIMETABLE: Timetable = [[], [], [], [], []];
 
 function App({ peopleDB }: Props) {
   const [people, setPeople] = useState<PersonData[]>([]);
+  const [intersectionsMap, setIntersectionsMap] = useState<LessonIntersections>({});
   const [favoriteId, setFavoriteId] = useState(
     localStorage.getItem('favoriteID'),
   );
@@ -52,7 +54,8 @@ function App({ peopleDB }: Props) {
   }, [victimId]);
 
   const loadData = async () => {
-    const foundPeople = await getPeople(peopleDB);
+    const foundPeople = await getAllPeopleData(peopleDB);
+    setIntersectionsMap(getLessonIntersectionsMap(foundPeople));
     setPeople(foundPeople);
     setVictimId(favoriteId);
     setIsLoading(false);
@@ -68,7 +71,7 @@ function App({ peopleDB }: Props) {
         people={people}
       />
 
-      <TimetableWrapper timetable={activeTimetable} isLoading={isLoading} />
+      <TimetableWrapper timetable={activeTimetable} isLoading={isLoading} intersectionsMap={intersectionsMap} />
     </div>
   );
 }
