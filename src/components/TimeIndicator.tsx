@@ -22,10 +22,10 @@ export function TimeIndicator() {
   useEffect(() => {
     const minuteRefresher = setInterval(() => {
       setCurrentTime(getOffsetDate());
-    });
+    }, TIME_INDICATOR_REFRESH_MS);
 
     return () => clearInterval(minuteRefresher);
-  }, [TIME_INDICATOR_REFRESH_MS]);
+  }, []);
 
   if (
     currentTimeHours < TIMETABLE_PIN_START_HOUR ||
