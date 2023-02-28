@@ -9,6 +9,7 @@ import { Hour } from './Hour';
 import { ContextualizedLesson, Lessons } from './Lessons';
 import { getLessonKey } from '../utils/intersections';
 import useVictim from '../hooks/useVictim';
+import { Loader } from './Loader';
 
 export const HourWidthContext = createContext<undefined | number>(undefined);
 
@@ -21,7 +22,7 @@ const getWindowDimensions = () => {
 };
 
 export const TimetableWrapper = () => {
-  const { activeTimetable, isLoading } = useVictim();
+  const { activeTimetable, isLoading, error } = useVictim();
 
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions(),
@@ -56,17 +57,15 @@ export const TimetableWrapper = () => {
           <div className="hours header bg-second w-100 rounded text-dark d-flex flex-row justify-content-around ps-2">
             {hours}
           </div>
-          {(isLoading && (
-            <div className="spinner">
-              <img src="/spinner2.gif" height="450" />
-            </div>
-          )) || (
+          {(isLoading || error) ?
+            <Loader />
+            :
             <div className="dayLessonsWrapper h-100 pt-3">
               {activeTimetable.map((dayLessons, day) => (
                 <Lessons lessons={dayLessons} key={day} dayIndex={day} />
               ))}
             </div>
-          )}
+          }
         </section>
       </div>
     </HourWidthContext.Provider>
