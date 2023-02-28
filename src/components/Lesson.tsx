@@ -5,6 +5,7 @@ import { TIME_OFFSET_PX } from './Hour';
 import { ContextualizedLesson } from './Lessons';
 import { HourWidthContext } from './TimetableWrapper';
 import { LessonIntersection } from './LessonIntersection';
+import useVictim from '../hooks/useVictim';
 
 export const SEPARATOR_WHITESPACE_PERCENTAGE = 4;
 
@@ -26,8 +27,12 @@ const parseTimeToHours = (timeStr: string) => {
 };
 
 export const Lesson = ({ dataWithCollisions }: Props) => {
+  const {victim} = useVictim();
+
   const hourWidthPx = useContext(HourWidthContext);
-  const intersections = dataWithCollisions.intersections;
+  // filter out the current victim itself
+  const intersections = dataWithCollisions.intersections ?
+    dataWithCollisions.intersections.filter(int => int.id !== victim?.id) : null;
 
   if (hourWidthPx === undefined) return null;
 
@@ -47,8 +52,6 @@ export const Lesson = ({ dataWithCollisions }: Props) => {
 
   const displayInline =
     dataWithCollisions.levelCount > MINIMUM_OVERLAP_FOR_INLINE;
-
-  // TODO: implement a way to display the intersections
 
   return (
     <div
@@ -71,7 +74,7 @@ export const Lesson = ({ dataWithCollisions }: Props) => {
         }),
       }}
     >
-      {intersections && intersections.length > 1 && (
+      {intersections && intersections.length > 0 && (
         <div className="lesson-intersections">
           {intersections.map((intersection, i) => (
             <LessonIntersection key={i} index={intersections.length - i} intersection={intersection} />
