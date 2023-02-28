@@ -1,14 +1,15 @@
 import { createContext, useEffect, useState } from 'react';
 import { getAllPeopleData, PersonData, Timetable } from '../utils/dbQueries';
 import { Firestore } from 'firebase/firestore/lite';
-import { getLessonIntersectionsMap, LessonIntersections } from '../utils/intersections';
+import { getLessonIntersectionsMap, getLessonKey, LessonIntersections } from '../utils/intersections';
+import { ContextualizedLesson } from '../components/Lessons';
 
-interface VictimContextType {
-  victim: PersonData | null;
+interface VictimContextType
+{
   people: PersonData[];
+  activeVictim: PersonData | null;
   setVictimId: (newVictimId: string | null) => void;
-  activeTimetable: Timetable;
-  intersectionsMap: LessonIntersections;
+  activeTimetable: ContextualizedLesson[][];
   favoriteId: string | null;
   setFavoriteId: (newFavoriteId: string | null) => void;
   isLoading: boolean;
@@ -20,60 +21,85 @@ type Props = {
 }
 
 const EMPTY_TIMETABLE: Timetable = [[], [], [], [], []];
+const FAVORITE_ID_KEY = 'favoriteID';
+
+const getContextualizedLessons = (timetable: Timetable, intersectionsMap: LessonIntersections) =>
+  timetable.map((dayLessons) => {
+    let prevEnd = undefined;
+    const contextualizedDayLessons: ContextualizedLesson[] = [...dayLessons];
+    for (const lesson of contextualizedDayLessons)
+    {
+      lesson.prevEndTime = prevEnd;
+      prevEnd = lesson.endTime;
+      lesson.intersections = intersectionsMap[getLessonKey(lesson)];
+    }
+
+    return contextualizedDayLessons;
+  });
 
 export const VictimContext = createContext<VictimContextType | undefined>(undefined);
 
 export const VictimProvider = ({ children, peopleDB }: Props) => {
   const [people, setPeople] = useState<PersonData[]>([]);
-  const [victim, setVictim] = useState<PersonData | null>(null);
+  const [activeVictim, setActiveVictim] = useState<PersonData | null>(null);
   const [intersectionsMap, setIntersectionsMap] = useState<LessonIntersections>({});
   const [favoriteId, setFavoriteId] = useState(
-    localStorage.getItem('favoriteID'),
+    localStorage.getItem(FAVORITE_ID_KEY),
   );
-  const [activeTimetable, setActiveTimetable] = useState<Timetable>(EMPTY_TIMETABLE);
+  const [activeTimetable, setActiveTimetable] =
+    useState<ContextualizedLesson[][]>(EMPTY_TIMETABLE);
   const [isLoading, setIsLoading] = useState(true);
-
 
   useEffect(() => {
     getAllPeopleData(peopleDB).then((foundPeople) => {
-      const favoriteVictim = foundPeople.find((person) => person.id === favoriteId) ?? null;
-      if (favoriteVictim) {
-        setVictim(favoriteVictim);
-        setActiveTimetable(favoriteVictim.timetable ?? EMPTY_TIMETABLE);
-      }
-
-      setIntersectionsMap(getLessonIntersectionsMap(foundPeople));
+      const map = getLessonIntersectionsMap(foundPeople);
+      setIntersectionsMap(map);
       setPeople(foundPeople);
       setIsLoading(false);
+
+      const favoriteVictim = foundPeople.find((person) => person.id === favoriteId) ?? null;
+      if (favoriteVictim)
+      {
+        setActiveVictim(favoriteVictim);
+        setActiveTimetable(getContextualizedLessons(favoriteVictim.timetable, map));
+      }
     });
-  }, [])
+  }, []);
 
-
-  useEffect(() => {
-    if (favoriteId) localStorage.setItem('favoriteID', favoriteId);
-  }, [favoriteId]);
-
-
+  /**
+   * Sets the active victim and updates the active timetable.
+   */
   const handleVictimChange = (newVictimId: string | null) => {
     const newVictim = people.find((person) => person.id === newVictimId) ?? null;
 
-    setVictim(newVictim);
+    setActiveVictim(newVictim);
 
-    if (newVictim) {
-      setActiveTimetable(newVictim.timetable ?? EMPTY_TIMETABLE);
-    }
-  }
+    // TODO: does this need to be constructed every time? Wouldn't it be better
+    // to run getContextualizedLessons once for each person in getAllPeopleData?
+    setActiveTimetable(newVictim ?
+      getContextualizedLessons(newVictim.timetable, intersectionsMap)
+      : EMPTY_TIMETABLE
+    );
+  };
+
+  /**
+   * Sets the favorite victim ID in local storage.
+   */
+  const handleFavoriteChange = (newFavoriteId: string | null) => {
+    setFavoriteId(newFavoriteId);
+    localStorage.setItem(FAVORITE_ID_KEY, newFavoriteId ?? '');
+  };
+
 
   return (
     <VictimContext.Provider value={{
-      victim,
       people,
+      activeVictim,
       setVictimId: handleVictimChange,
       activeTimetable,
-      intersectionsMap,
       favoriteId,
-      setFavoriteId,
-      isLoading
+      setFavoriteId: handleFavoriteChange,
+      isLoading,
     }}>
       {children}
     </VictimContext.Provider>
