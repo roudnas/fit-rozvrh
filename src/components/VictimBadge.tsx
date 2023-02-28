@@ -5,17 +5,17 @@ import { PersonData } from '../utils/dbQueries';
 import useVictim from '../hooks/useVictim';
 
 export function VictimBadge() {
-  const { victim, favoriteId, setFavoriteId } = useVictim();
+  const { activeVictim, favoriteId, setFavoriteId } = useVictim();
 
-  if (!victim) return null;
+  if (!activeVictim) return null;
 
   return (
     <Badge
       bg="secondary"
       className="bg-black d-flex flex-row align-items-center"
     >
-      <h6 className="me-1 my-0">{victim.name}</h6>
-      {victim.id === favoriteId ? (
+      <h6 className="me-1 my-0">{activeVictim.name}</h6>
+      {activeVictim.id === favoriteId ? (
         <AiFillStar
           size={18}
           className="star"
@@ -28,7 +28,7 @@ export function VictimBadge() {
           size={14}
           className="star"
           onClick={() => {
-            setFavoriteId(victim.id);
+            setFavoriteId(activeVictim.id);
           }}
         />
       )}

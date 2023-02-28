@@ -27,12 +27,12 @@ const parseTimeToHours = (timeStr: string) => {
 };
 
 export const Lesson = ({ dataWithCollisions }: Props) => {
-  const {victim} = useVictim();
+  const {activeVictim} = useVictim();
 
   const hourWidthPx = useContext(HourWidthContext);
   // filter out the current victim itself
   const intersections = dataWithCollisions.intersections ?
-    dataWithCollisions.intersections.filter(int => int.id !== victim?.id) : null;
+    dataWithCollisions.intersections.filter(int => int.id !== activeVictim?.id) : null;
 
   if (hourWidthPx === undefined) return null;
 
