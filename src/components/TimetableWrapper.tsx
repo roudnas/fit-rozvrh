@@ -21,7 +21,7 @@ const getWindowDimensions = () => {
 };
 
 export const TimetableWrapper = () => {
-  const { activeTimetable, isLoading, intersectionsMap } = useVictim();
+  const { activeTimetable, isLoading } = useVictim();
 
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions(),
@@ -49,18 +49,6 @@ export const TimetableWrapper = () => {
     hours.push(<Hour hour={hour} key={hour} />);
   }
 
-  const contextualizedTimetable = activeTimetable.map((dayLessons) => {
-    let prevEnd = undefined;
-    const contextualizedDayLessons: ContextualizedLesson[] = [...dayLessons];
-    for (const lesson of contextualizedDayLessons) {
-      lesson.prevEndTime = prevEnd;
-      prevEnd = lesson.endTime;
-      lesson.intersections = intersectionsMap[getLessonKey(lesson)]
-    }
-
-    return contextualizedDayLessons;
-  });
-
   return (
     <HourWidthContext.Provider value={hourWidthPx}>
       <div className="bg-dark wrapperino w-100 main rounded">
@@ -74,7 +62,7 @@ export const TimetableWrapper = () => {
             </div>
           )) || (
             <div className="dayLessonsWrapper h-100 pt-3">
-              {contextualizedTimetable.map((dayLessons, day) => (
+              {activeTimetable.map((dayLessons, day) => (
                 <Lessons lessons={dayLessons} key={day} dayIndex={day} />
               ))}
             </div>
