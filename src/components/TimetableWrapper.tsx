@@ -13,7 +13,8 @@ import { getLessonKey, LessonIntersections } from '../utils/intersections';
 type Props = {
   timetable: Timetable;
   isLoading: boolean;
-  intersectionsMap: LessonIntersections
+  intersectionsMap: LessonIntersections;
+  setVictimId: (newVictimId: string | null) => void;
 };
 
 export const HourWidthContext = createContext<undefined | number>(undefined);
@@ -26,7 +27,7 @@ const getWindowDimensions = () => {
   };
 };
 
-export const TimetableWrapper = ({ timetable, isLoading, intersectionsMap }: Props) => {
+export const TimetableWrapper = ({ timetable, isLoading, intersectionsMap, setVictimId }: Props) => {
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions(),
   );
@@ -78,7 +79,7 @@ export const TimetableWrapper = ({ timetable, isLoading, intersectionsMap }: Pro
           )) || (
             <div className="dayLessonsWrapper h-100 pt-3">
               {contextualizedTimetable.map((dayLessons, day) => (
-                <Lessons lessons={dayLessons} key={day} dayIndex={day} />
+                <Lessons lessons={dayLessons} key={day} dayIndex={day} setVictimId={setVictimId} />
               ))}
             </div>
           )}
