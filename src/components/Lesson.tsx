@@ -4,6 +4,7 @@ import { TIMETABLE_START_HOUR } from '../App';
 import { TIME_OFFSET_PX } from './Hour';
 import { ContextualizedLesson } from './Lessons';
 import { HourWidthContext } from './TimetableWrapper';
+import { LessonIntersection } from './LessonIntersection';
 
 export const SEPARATOR_WHITESPACE_PERCENTAGE = 4;
 
@@ -43,7 +44,6 @@ export const Lesson = ({ dataWithCollisions }: Props) => {
   }
 
   const width = (endTime - startTime) * hourWidthPx;
-  const className = `lesson text-dark rounded bg-${dataWithCollisions.type} p-2`;
 
   const displayInline =
     dataWithCollisions.levelCount > MINIMUM_OVERLAP_FOR_INLINE;
@@ -52,10 +52,11 @@ export const Lesson = ({ dataWithCollisions }: Props) => {
 
   return (
     <div
-      className={className}
+      className={`lesson text-dark rounded bg-${dataWithCollisions.type}`}
       style={{
         width: width,
         marginLeft: marL,
+        zIndex: dataWithCollisions.level,
         top: `${
           (100 / dataWithCollisions.levelCount) * (dataWithCollisions.level - 1)
         }%`,
@@ -70,18 +71,27 @@ export const Lesson = ({ dataWithCollisions }: Props) => {
         }),
       }}
     >
-      {dataWithCollisions.note && (
-        <h6 className="note bg-danger p-1 text-bold text-light rounded">
-          {dataWithCollisions.note}
-        </h6>
+      {intersections && intersections.length > 1 && (
+        <div className="lesson-intersections">
+          {intersections.map((intersection, i) => (
+            <LessonIntersection key={i} index={intersections.length - i} intersection={intersection} />
+          ))}
+        </div>
       )}
-      {dataWithCollisions.levelCount === 1 && (
-        <h6 className="m-0 ">
-          {dataWithCollisions.startTime} - {dataWithCollisions.endTime}
-        </h6>
-      )}
-      <h6 className="m-0 text-bold">{dataWithCollisions.title}</h6>
-      <h6 className="m-0 ">{dataWithCollisions.room}</h6>
+      <div className={`lesson-content p-2`}>
+        {dataWithCollisions.note && (
+          <h6 className="note bg-danger p-1 text-bold text-light rounded">
+            {dataWithCollisions.note}
+          </h6>
+        )}
+        {dataWithCollisions.levelCount === 1 && (
+          <h6 className="m-0 ">
+            {dataWithCollisions.startTime} - {dataWithCollisions.endTime}
+          </h6>
+        )}
+        <h6 className="m-0 text-bold">{dataWithCollisions.title}</h6>
+        <h6 className="m-0 ">{dataWithCollisions.room}</h6>
+      </div>
     </div>
   );
 };

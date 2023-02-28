@@ -1,4 +1,4 @@
-import './styles/App.css';
+import './styles/App.scss';
 
 import type { Firestore } from 'firebase/firestore/lite';
 import { useEffect, useState } from 'react';
