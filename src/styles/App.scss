@@ -22,7 +22,19 @@ body {
   padding-right: 20px;
 }
 .spinner {
-  min-height: 75%;
+  width: calc(100vw - 40px);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .error {
+    .error-message {
+      margin-top: 1rem;
+      opacity: 0.1;
+      font-size: .85rem !important; // TODO: remove this mf !important
+    }
+  }
 }
 p {
   margin: 0 !important;
@@ -64,10 +76,6 @@ hr {
   border: none !important;
 }
 
-.lessons:not(:last-child) {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-}
-
 .bg-second {
   transition: all var(--transition-duration) ease;
   background-color: var(--header);
@@ -95,12 +103,6 @@ hr {
   position: absolute;
   top: 50%;
   left: 0;
-}
-
-.lessons {
-  position: relative;
-  top: 0;
-  flex-grow: 1;
 }
 
 .pointer {
