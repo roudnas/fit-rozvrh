@@ -17,8 +17,10 @@ export function getOffsetDate() {
  * @param semesterStartTimestamp unix timestamp of the semester start (in milliseconds).
  */
 export function getSemesterWeekNo(semesterStartTimestamp: number) {
-  return 1 + moment.unix(semesterStartTimestamp / 1000)
-    .diff(getOffsetDate(), 'weeks');
+  const diff = getOffsetDate()
+    .diff(moment.unix(semesterStartTimestamp / 1000), 'weeks');
+
+  return 1 + Math.abs(diff);
 }
 
 export function getEvenOddWeek() {
