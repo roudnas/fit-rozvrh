@@ -17,7 +17,6 @@ export type CollisionInfo = {
 
 type Props = {
   dataWithCollisions: ContextualizedLesson & CollisionInfo;
-  setVictimId: (newVictimId: string | null) => void;
 };
 
 const parseTimeToHours = (timeStr: string) => {
@@ -26,7 +25,7 @@ const parseTimeToHours = (timeStr: string) => {
   return h + m;
 };
 
-export const Lesson = ({ dataWithCollisions, setVictimId }: Props) => {
+export const Lesson = ({ dataWithCollisions }: Props) => {
   const hourWidthPx = useContext(HourWidthContext);
   const intersections = dataWithCollisions.intersections;
 
@@ -75,7 +74,7 @@ export const Lesson = ({ dataWithCollisions, setVictimId }: Props) => {
       {intersections && intersections.length > 1 && (
         <div className="lesson-intersections">
           {intersections.map((intersection, i) => (
-            <LessonIntersection key={i} index={intersections.length - i} intersection={intersection} setVictimId={setVictimId} />
+            <LessonIntersection key={i} index={intersections.length - i} intersection={intersection} />
           ))}
         </div>
       )}

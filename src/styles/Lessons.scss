@@ -8,6 +8,7 @@
         .lesson-intersections .lesson-intersection {
             // correct translate is set inline (!important needed)
             transform: translate3d(0,0,0) !important;
+            box-shadow: none;
         }
     }
 }
@@ -41,6 +42,7 @@
     background-color: inherit;
     border-radius: inherit;
 
+    // these styles are active when the lesson is hovered
     .lesson-intersection {
         position: absolute;
         width: 100%;
@@ -51,10 +53,10 @@
         padding: .25rem 0 0 0;
         background-color: inherit;
         border-radius: inherit;
-        box-shadow: 1px 3px 7px #000;
+        box-shadow: 1px 2px 7px #000;
 
         will-change: transform;
-        transition: transform 0.2s ease-in-out;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
         &:hover {
             cursor: pointer;

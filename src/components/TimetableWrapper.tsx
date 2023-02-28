@@ -5,17 +5,10 @@ import {
   TIMETABLE_END_HOUR,
   TIMETABLE_START_HOUR,
 } from '../App';
-import { Timetable } from '../utils/dbQueries';
 import { Hour } from './Hour';
 import { ContextualizedLesson, Lessons } from './Lessons';
-import { getLessonKey, LessonIntersections } from '../utils/intersections';
-
-type Props = {
-  timetable: Timetable;
-  isLoading: boolean;
-  intersectionsMap: LessonIntersections;
-  setVictimId: (newVictimId: string | null) => void;
-};
+import { getLessonKey } from '../utils/intersections';
+import useVictim from '../hooks/useVictim';
 
 export const HourWidthContext = createContext<undefined | number>(undefined);
 
@@ -27,10 +20,13 @@ const getWindowDimensions = () => {
   };
 };
 
-export const TimetableWrapper = ({ timetable, isLoading, intersectionsMap, setVictimId }: Props) => {
+export const TimetableWrapper = () => {
+  const { activeTimetable, isLoading, intersectionsMap } = useVictim();
+
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions(),
   );
+
   useEffect(() => {
     const listener = () => {
       setWindowDimensions(getWindowDimensions());
@@ -53,7 +49,7 @@ export const TimetableWrapper = ({ timetable, isLoading, intersectionsMap, setVi
     hours.push(<Hour hour={hour} key={hour} />);
   }
 
-  const contextualizedTimetable = timetable.map((dayLessons) => {
+  const contextualizedTimetable = activeTimetable.map((dayLessons) => {
     let prevEnd = undefined;
     const contextualizedDayLessons: ContextualizedLesson[] = [...dayLessons];
     for (const lesson of contextualizedDayLessons) {
@@ -79,7 +75,7 @@ export const TimetableWrapper = ({ timetable, isLoading, intersectionsMap, setVi
           )) || (
             <div className="dayLessonsWrapper h-100 pt-3">
               {contextualizedTimetable.map((dayLessons, day) => (
-                <Lessons lessons={dayLessons} key={day} dayIndex={day} setVictimId={setVictimId} />
+                <Lessons lessons={dayLessons} key={day} dayIndex={day} />
               ))}
             </div>
           )}
