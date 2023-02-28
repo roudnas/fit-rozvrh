@@ -1,15 +1,17 @@
 import { PersonInfo } from '../utils/dbQueries';
+import useVictim from '../hooks/useVictim';
 
 type Props = {
   /** Used for correct positioning on lesson hover. */
   index: number;
   intersection: PersonInfo;
-  setVictimId: (newVictimId: string | null) => void;
 }
 
 const TRANSFORM_OFFSET = 1.75;
 
-export const LessonIntersection = ({ index, intersection, setVictimId }: Props) => {
+export const LessonIntersection = ({ index, intersection }: Props) => {
+  const { setVictimId } = useVictim();
+
   return (
     <div className="lesson-intersection"
       style={{
