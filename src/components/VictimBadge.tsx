@@ -2,15 +2,12 @@ import Badge from 'react-bootstrap/Badge';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 import { PersonData } from '../utils/dbQueries';
+import useVictim from '../hooks/useVictim';
 
-type Props = {
-  victim: PersonData | null;
-  favoriteId: string | null;
-  setFavoriteId: (newFavoriteId: string | null) => void;
-};
+export function VictimBadge() {
+  const { victim, favoriteId, setFavoriteId } = useVictim();
 
-export function VictimBadge({ victim, favoriteId, setFavoriteId }: Props) {
-  if (victim === null) return null;
+  if (!victim) return null;
 
   return (
     <Badge
