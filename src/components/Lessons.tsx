@@ -1,5 +1,6 @@
 import { areIntervalsOverlapping, getDay } from 'date-fns';
 import { useMemo } from 'react';
+import "../styles/Lessons.scss"
 
 import { PersonInfo, TimetableRecord } from '../utils/dbQueries';
 import { intervalFromLesson } from '../utils/intervalFromLesson';
@@ -52,7 +53,7 @@ export const Lessons = ({ lessons, dayIndex }: Props) => {
 
   return (
     <>
-      <div className="lessons py-2 text-dark d-flex flex-row">
+      <div className="lessons py-2 text-dark d-flex flex-row" style={{zIndex: dayIndex}}>
         <h5 className="day-text text-light h-index my-auto">
           {getDayName(dayIndex)}
         </h5>
