@@ -1,3 +1,13 @@
+.lessons {
+    position: relative;
+    top: 0;
+    flex-grow: 1;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    }
+}
+
 .lesson {
     transition: all var(--transition-duration) ease;
     position: relative;
@@ -7,7 +17,7 @@
     &:not(:hover) {
         .lesson-intersections .lesson-intersection {
             // correct translate is set inline (!important needed)
-            transform: translate3d(0,0,0) !important;
+            transform: translate3d(0, 0, 0) !important;
             box-shadow: none;
         }
     }

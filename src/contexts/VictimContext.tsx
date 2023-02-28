@@ -13,6 +13,7 @@ interface VictimContextType
   favoriteId: string | null;
   setFavoriteId: (newFavoriteId: string | null) => void;
   isLoading: boolean;
+  error: string | null;
 }
 
 type Props = {
@@ -49,21 +50,28 @@ export const VictimProvider = ({ children, peopleDB }: Props) => {
   const [activeTimetable, setActiveTimetable] =
     useState<ContextualizedLesson[][]>(EMPTY_TIMETABLE);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    getAllPeopleData(peopleDB).then((foundPeople) => {
-      const map = getLessonIntersectionsMap(foundPeople);
-      setIntersectionsMap(map);
-      setPeople(foundPeople);
-      setIsLoading(false);
+    getAllPeopleData(peopleDB)
+      .then((foundPeople) => {
+        const map = getLessonIntersectionsMap(foundPeople);
+        setIntersectionsMap(map);
+        setPeople(foundPeople);
+        setIsLoading(false);
 
-      const favoriteVictim = foundPeople.find((person) => person.id === favoriteId) ?? null;
-      if (favoriteVictim)
-      {
-        setActiveVictim(favoriteVictim);
-        setActiveTimetable(getContextualizedLessons(favoriteVictim.timetable, map));
-      }
-    });
+        const favoriteVictim = foundPeople.find((person) => person.id === favoriteId) ?? null;
+        if (favoriteVictim)
+        {
+          setActiveVictim(favoriteVictim);
+          setActiveTimetable(getContextualizedLessons(favoriteVictim.timetable, map));
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
+        setIsLoading(false);
+      });
   }, []);
 
   /**
@@ -78,7 +86,7 @@ export const VictimProvider = ({ children, peopleDB }: Props) => {
     // to run getContextualizedLessons once for each person in getAllPeopleData?
     setActiveTimetable(newVictim ?
       getContextualizedLessons(newVictim.timetable, intersectionsMap)
-      : EMPTY_TIMETABLE
+      : EMPTY_TIMETABLE,
     );
   };
 
@@ -100,6 +108,7 @@ export const VictimProvider = ({ children, peopleDB }: Props) => {
       favoriteId,
       setFavoriteId: handleFavoriteChange,
       isLoading,
+      error,
     }}>
       {children}
     </VictimContext.Provider>
