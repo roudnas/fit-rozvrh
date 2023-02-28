@@ -16,6 +16,7 @@ export type ContextualizedLesson = TimetableRecord & {
 type Props = {
   lessons: ContextualizedLesson[];
   dayIndex: number;
+  setVictimId: (newVictimId: string | null) => void;
 };
 
 const getDayName = (index: number) => {
@@ -23,7 +24,7 @@ const getDayName = (index: number) => {
   return names[index];
 };
 
-export const Lessons = ({ lessons, dayIndex }: Props) => {
+export const Lessons = ({ lessons, dayIndex, setVictimId }: Props) => {
   const lessonsWithCollisions = useMemo(() => {
     const returnArr: (TimetableRecord & CollisionInfo)[] = [];
 
@@ -59,7 +60,7 @@ export const Lessons = ({ lessons, dayIndex }: Props) => {
         </h5>
         {dayIndex + 1 === getDay(new Date()) && <TimeIndicator />}
         {lessonsWithCollisions.map((lessonWithCollisions, i) => {
-          return <Lesson key={i} dataWithCollisions={lessonWithCollisions} />;
+          return <Lesson key={i} dataWithCollisions={lessonWithCollisions} setVictimId={setVictimId} />;
         })}
       </div>
     </>

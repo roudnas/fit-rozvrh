@@ -71,7 +71,7 @@ function App({ peopleDB }: Props) {
         people={people}
       />
 
-      <TimetableWrapper timetable={activeTimetable} isLoading={isLoading} intersectionsMap={intersectionsMap} />
+      <TimetableWrapper setVictimId={setVictimId} timetable={activeTimetable} isLoading={isLoading} intersectionsMap={intersectionsMap} />
     </div>
   );
 }
