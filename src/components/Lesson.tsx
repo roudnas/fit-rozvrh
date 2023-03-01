@@ -6,6 +6,8 @@ import { ContextualizedLesson } from './Lessons';
 import { HourWidthContext } from './TimetableWrapper';
 import { LessonIntersection } from './LessonIntersection';
 import useVictim from '../hooks/useVictim';
+import classNames from 'classnames';
+import { getEvenOddWeek } from '../utils/date';
 
 export const SEPARATOR_WHITESPACE_PERCENTAGE = 4;
 
@@ -53,9 +55,17 @@ export const Lesson = ({ dataWithCollisions }: Props) => {
   const displayInline =
     dataWithCollisions.levelCount > MINIMUM_OVERLAP_FOR_INLINE;
 
+  // if the note is "even" or "odd" and it doesn't match the current week => inactive
+  const isInActive = dataWithCollisions.note &&
+    ["even", "odd"].some(note => note === dataWithCollisions.note) &&
+    dataWithCollisions.note !== getEvenOddWeek();
+
   return (
     <div
-      className={`lesson text-dark rounded bg-${dataWithCollisions.type}`}
+      className={classNames(
+        `lesson text-dark rounded bg-${dataWithCollisions.type}`,
+        { 'is-inactive': isInActive }
+      )}
       style={{
         width: width,
         marginLeft: marL,
