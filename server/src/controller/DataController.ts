@@ -1,7 +1,6 @@
 import express, {Request, Response, Router} from 'express';
 import {handleDataUpload} from "../service/DataService";
 import {AppDataSource} from "../app-data-source";
-import {User} from "../entity/User";
 import {Repository} from "typeorm";
 import {Timetable} from "../entity/Timetable";
 

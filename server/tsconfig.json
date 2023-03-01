@@ -10,12 +10,13 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "experimentalDecorators": true,
     "outDir": "./dist",
     "strictPropertyInitialization": false,
     "emitDecoratorMetadata": true,
+    "composite": true,
     "types": [
       "node"
     ]
