@@ -23,8 +23,7 @@
     }
 
     &.is-inactive {
-        opacity: 0.7;
-        background-color: #666;
+        filter: brightness(0.5);
         cursor: default;
         
         .lesson-intersections {
