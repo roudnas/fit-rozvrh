@@ -34,6 +34,9 @@ export type PersonData = {
   timetable: Timetable;
 };
 
+/**
+ * @deprecated
+ */
 export const getPeople = async (db: Firestore) => {
   const peopleCollection = collection(db, 'users');
   const peopleDocs = await getDocs(peopleCollection);

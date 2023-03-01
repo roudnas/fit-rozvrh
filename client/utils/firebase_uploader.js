@@ -1,3 +1,5 @@
+/* @deprecated */
+/* eslint-disable */
 const { initializeApp } = require('firebase/app');
 const { getFirestore, addDoc, collection } = require('firebase/firestore/lite');
 const process = require('process');

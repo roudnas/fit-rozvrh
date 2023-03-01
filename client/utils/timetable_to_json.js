@@ -1,3 +1,4 @@
+/* eslint-disable */
 allClasses = document.getElementsByClassName('event-base-wrapper');
 formattedClasses = [];
 

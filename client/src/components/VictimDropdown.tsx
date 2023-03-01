@@ -1,6 +1,6 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 
-import { PersonData } from '../utils/dbQueries';
+import { PersonData } from '../utils/DBUtil';
 
 type Props = {
   people: PersonData[];

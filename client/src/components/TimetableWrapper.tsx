@@ -5,7 +5,7 @@ import {
   TIMETABLE_END_HOUR,
   TIMETABLE_START_HOUR,
 } from '../App';
-import { Timetable } from '../utils/dbQueries';
+import { Timetable } from '../utils/DBUtil';
 import { Hour } from './Hour';
 import { ContextualizedLesson, Lessons } from './Lessons';
 

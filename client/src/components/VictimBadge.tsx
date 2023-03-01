@@ -1,7 +1,7 @@
 import Badge from 'react-bootstrap/Badge';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
-import { PersonData } from '../utils/dbQueries';
+import { PersonData } from '../utils/DBUtil';
 
 type Props = {
   victim: PersonData | null;

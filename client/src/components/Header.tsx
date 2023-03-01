@@ -2,7 +2,7 @@ import { differenceInCalendarWeeks, getWeek } from 'date-fns';
 import Badge from 'react-bootstrap/Badge';
 
 import { SEMESTER_START_DATE } from '../App';
-import { PersonData } from '../utils/dbQueries';
+import { PersonData } from '../utils/DBUtil';
 import { ThemeDropdown } from './ThemeDropdown';
 import { VictimBadge } from './VictimBadge';
 import { VictimDropdown } from './VictimDropdown';
