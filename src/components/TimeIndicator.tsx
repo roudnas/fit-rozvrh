@@ -13,7 +13,7 @@ export const TIME_INDICATOR_REFRESH_MS = 60000;
 
 export function TimeIndicator() {
   const [currentTime, setCurrentTime] = useState(getOffsetDate());
-  const currentTimeHours = currentTime.hours() + currentTime.minutes() / 60;
+  const currentTimeHours = currentTime.getHours() + currentTime.getMinutes() / 60;
 
   const hourWidthPx = useContext(HourWidthContext);
 
