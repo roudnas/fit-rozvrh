@@ -1,9 +1,10 @@
 import { differenceInCalendarWeeks, getWeek, subMinutes, addMinutes } from 'date-fns';
+import { getTimezoneOffset } from 'date-fns-tz';
 
 /**
  * The time data CTU provides is generated in the Europe/Prague timezone (GMT +1).
  */
-export const CTU_TIMEZONE_OFFSET = 1;
+export const CTU_TIMEZONE_OFFSET = getTimezoneOffset('Europe/Prague') / 3600000;
 
 /**
  * Get "timezone corrected", date object.
