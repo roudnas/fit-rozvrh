@@ -14,7 +14,6 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react": "^7.32.2",
     "firebase": "^9.10.0",
-    "moment": "^2.29.4",
     "prettier": "^2.8.4",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
