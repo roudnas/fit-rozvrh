@@ -6,6 +6,10 @@ import cors from "cors";
 import DataRouter from "./controller/DataController";
 import morgan from "morgan";
 import "reflect-metadata";
+import https, {Server} from "https";
+import fs from "fs";
+import path from "path";
+import {fileURLToPath} from "url";
 
 dotenv.config();
 
@@ -23,6 +27,22 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use("/data", DataRouter);
 
-app.listen(port, () => {
-    console.log("App listening.");
-});
+if (process.env.SERVER === "PROD") {
+    const key = fs.readFileSync(path.resolve('./../certs/selfsigned.key'));
+    const cert = fs.readFileSync(path.resolve('./../certs/selfsigned.crt'));
+    const options = {
+        key: key,
+        cert: cert
+    };
+
+    const server: Server = https.createServer(options, app);
+    server.listen(port, () => {
+        console.log("App listening.");
+    });
+
+} else {
+    app.listen(() => {
+        console.log("App listening.")
+    })
+}
+
