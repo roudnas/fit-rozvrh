@@ -28,8 +28,8 @@ app.use(morgan("dev"));
 app.use("/data", DataRouter);
 
 if (process.env.SERVER === "PROD") {
-    const key = fs.readFileSync(path.resolve('./../certs/selfsigned.key'));
-    const cert = fs.readFileSync(path.resolve('./../certs/selfsigned.crt'));
+    const key = fs.readFileSync(path.resolve('./../certs/key.pem'));
+    const cert = fs.readFileSync(path.resolve('./../certs/cert.pem'));
     const options = {
         key: key,
         cert: cert
