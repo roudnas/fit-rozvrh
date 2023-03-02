@@ -31,12 +31,23 @@ const ColorInput = ({ label, value, setValue }: ColorInputProps) => {
   );
 };
 
+const getTheme = () => {
+  const theme = localStorage.getItem('theme') as string;
+
+  if (!theme) {
+    return DEFAULT_THEME;
+  }
+
+  try {
+    return JSON.parse(theme);
+
+  } catch (e) {
+    return DEFAULT_THEME;
+  }
+}
+
 export function ThemeDropdown() {
-  const [theme, setTheme] = useState(
-    localStorage.getItem('theme')
-      ? JSON.parse(localStorage.getItem('theme') as string)
-      : DEFAULT_THEME,
-  );
+  const [theme, setTheme] = useState(getTheme());
 
   useEffect(() => {
     document.documentElement.style.setProperty('--bg-tut', theme.tut);
