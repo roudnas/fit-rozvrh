@@ -14,7 +14,7 @@
     }
 
     &.is-inactive {
-        filter: brightness(0.4) grayscale(0.25);
+        filter: brightness(.5) grayscale(.7);
     }
 }
 

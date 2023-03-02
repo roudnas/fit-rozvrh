@@ -4,6 +4,10 @@ import {
   TimetableRecord,
 } from '../services/DataService';
 
+const isInvalidNote = (note: string|undefined) => {
+  return !note || note === "" || (note !== "odd" && note !== "even");
+}
+
 /**
  * LessonInteractions["dayNumber-BI-PA2-lec-T9:350-..."] = array of people who share this lesson.
  * Hashmap go brrr... Jebu nějaký fancy, top speed, A* lookup překryvů.
@@ -16,7 +20,13 @@ export type LessonIntersections = {
  * Get an identification key for a given lesson.
  */
 export const getLessonKey = (lesson: TimetableRecord) => {
-  return `${lesson.day}-${lesson.title}-${lesson.type}-${lesson.room}-${lesson.startTime}-${lesson.endTime}`;
+  const key = `${lesson.day}-${lesson.title}-${lesson.type}-${lesson.room}-${lesson.startTime}-${lesson.endTime}`;
+
+  if (isInvalidNote(lesson.note)) {
+    return key;
+  }
+
+  return `${key}-${lesson.note}`;
 };
 
 /**
