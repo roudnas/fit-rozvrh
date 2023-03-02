@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
 import { PersonData, Timetable } from '../services/DataService';
-import { Firestore } from 'firebase/firestore/lite';
 import { ContextualizedLesson } from '../components/Lessons';
 import { fetchTimetables } from '../services/DataService';
 
@@ -17,7 +16,6 @@ interface VictimContextType
 
 type Props = {
   children: React.ReactNode;
-  peopleDB: Firestore;
 }
 
 const EMPTY_TIMETABLE: Timetable = [[], [], [], [], []];
@@ -38,7 +36,7 @@ const getContextualizedLessons = (timetable: Timetable) =>
 
 export const VictimContext = createContext<VictimContextType | undefined>(undefined);
 
-export const VictimProvider = ({ children, peopleDB }: Props) => {
+export const VictimProvider = ({ children }: Props) => {
   const [people, setPeople] = useState<PersonData[]>([]);
   const [activeVictim, setActiveVictim] = useState<PersonData | null>(null);
   const [favoriteId, setFavoriteId] = useState(
