@@ -43,6 +43,11 @@ router.get("/", async (req: Request, res: Response) => {
        relations: {
            user: true,
            lessons: true
+       },
+       order: {
+           user: {
+               name: "ASC"
+           }
        }
    });
 
