@@ -14,8 +14,8 @@
       "type": "image/png"
     }
   ],
-  "id": "/?version=0.0.1",
-  "start_url": "/?source=pwa",
+  "id": "fitzvrh",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "theme_color": "#ffffff",
