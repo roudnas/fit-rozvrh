@@ -1,5 +1,6 @@
 import useVictim from '../hooks/useVictim';
 import { PersonInfo } from '../services/DataService';
+import { HiOutlineExternalLink } from "react-icons/all";
 
 type Props = {
   /** Used for correct positioning on lesson hover. */
@@ -21,7 +22,7 @@ export const LessonIntersection = ({ index, intersection }: Props) => {
       onClick={() => setVictimId(intersection.id)}
       title={`Show ${intersection.name}'s timetable.`}
     >
-      <h6 className="m-0">{intersection.name}</h6>
+      <h6 className="m-0">{intersection.name} <HiOutlineExternalLink/></h6>
     </div>
   );
 };
