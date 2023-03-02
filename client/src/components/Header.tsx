@@ -3,7 +3,6 @@ import Badge from 'react-bootstrap/Badge';
 import { SEMESTER_START_DATE } from '../App';
 import { PersonData } from '../utils/DBUtil';
 import {getEvenOddWeek, getSemesterWeekNo} from "../utils/date";
-import { PersonData } from '../utils/dbQueries';
 import { ThemeDropdown } from './ThemeDropdown';
 import { VictimBadge } from './VictimBadge';
 import { VictimDropdown } from './VictimDropdown';
