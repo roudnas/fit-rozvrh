@@ -26,23 +26,7 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 app.use("/data", DataRouter);
-
-if (process.env.SERVER === "PROD") {
-    const key = fs.readFileSync(path.resolve('./../certs/key.pem'));
-    const cert = fs.readFileSync(path.resolve('./../certs/cert.pem'));
-    const options = {
-        key: key,
-        cert: cert
-    };
-
-    const server: Server = https.createServer(options, app);
-    server.listen(port, () => {
-        console.log("App listening.");
-    });
-
-} else {
-    app.listen(() => {
-        console.log("App listening.")
-    })
-}
+app.listen(() => {
+    console.log("App listening.")
+})
 
