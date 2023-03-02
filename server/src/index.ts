@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 app.use("/data", DataRouter);
-app.listen(() => {
+app.listen(port,() => {
     console.log("App listening.")
 })
 
