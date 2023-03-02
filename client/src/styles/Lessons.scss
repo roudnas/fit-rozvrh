@@ -1,15 +1,20 @@
 .lesson {
-    transition: all var(--transition-duration) ease;
     position: relative;
     top: 0;
+    cursor: default;
+    transition: all var(--transition-duration) ease;
 
     // the default, un-hovered state
     &:not(:hover) {
         .lesson-intersections .lesson-intersection {
-            // correct translate is set inline (!important needed)
-            transform: translate3d(0,0,0) !important;
+            // "hovered" translate value is set inline by React (!important needed)
+            transform: translate3d(0, 0, 0) !important;
             box-shadow: none;
         }
+    }
+
+    &.is-inactive {
+        filter: brightness(0.4) grayscale(0.25);
     }
 }
 
