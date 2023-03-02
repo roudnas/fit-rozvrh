@@ -1,7 +1,7 @@
 import { areIntervalsOverlapping, getDay } from 'date-fns';
 import { useMemo } from 'react';
 
-import { TimetableRecord } from '../utils/DBUtil';
+import { TimetableRecord } from '../services/DataService';
 import { intervalFromLesson } from '../utils/TimeUtil';
 import { CollisionInfo, Lesson } from './Lesson';
 import { TimeIndicator } from './TimeIndicator';

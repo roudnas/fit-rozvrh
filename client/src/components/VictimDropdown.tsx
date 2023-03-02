@@ -1,13 +1,10 @@
 import Dropdown from 'react-bootstrap/Dropdown';
+import useVictim from '../hooks/useVictim';
 
-import { PersonData } from '../utils/DBUtil';
 
-type Props = {
-  people: PersonData[];
-  setVictimId: (newVictimId: string | null) => void;
-};
+export function VictimDropdown() {
+  const { setVictimId, people } = useVictim();
 
-export function VictimDropdown({ people, setVictimId }: Props) {
   return (
     <Dropdown>
       <Dropdown.Toggle

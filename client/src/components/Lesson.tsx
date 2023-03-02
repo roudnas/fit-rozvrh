@@ -42,14 +42,13 @@ export const Lesson = ({ dataWithCollisions }: Props) => {
   }
 
   const width = (endTime - startTime) * hourWidthPx;
-  const className = `lesson text-dark rounded bg-${dataWithCollisions.type} p-2`;
 
   const displayInline =
     dataWithCollisions.levelCount > MINIMUM_OVERLAP_FOR_INLINE;
 
   return (
     <div
-      className={className}
+      className={`lesson text-dark rounded bg-${dataWithCollisions.type}`}
       style={{
         width: width,
         marginLeft: marL,

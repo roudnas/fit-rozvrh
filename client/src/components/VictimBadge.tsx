@@ -1,24 +1,20 @@
 import Badge from 'react-bootstrap/Badge';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import useVictim from '../hooks/useVictim';
 
-import { PersonData } from '../utils/DBUtil';
 
-type Props = {
-  victim: PersonData | null;
-  favoriteId: string | null;
-  setFavoriteId: (newFavoriteId: string | null) => void;
-};
+export function VictimBadge() {
+  const { activeVictim, favoriteId, setFavoriteId } = useVictim();
 
-export function VictimBadge({ victim, favoriteId, setFavoriteId }: Props) {
-  if (victim === null) return null;
+  if (!activeVictim) return null;
 
   return (
     <Badge
       bg="secondary"
       className="bg-black d-flex flex-row align-items-center"
     >
-      <h6 className="me-1 my-0">{victim.name}</h6>
-      {victim.id === favoriteId ? (
+      <h6 className="me-1 my-0">{activeVictim.name}</h6>
+      {activeVictim.id === favoriteId ? (
         <AiFillStar
           size={18}
           className="star"
@@ -31,7 +27,7 @@ export function VictimBadge({ victim, favoriteId, setFavoriteId }: Props) {
           size={14}
           className="star"
           onClick={() => {
-            setFavoriteId(victim.id);
+            setFavoriteId(activeVictim.id);
           }}
         />
       )}

@@ -9,6 +9,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './App';
+import { VictimProvider } from './contexts/VictimContext';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -27,7 +28,9 @@ const db = getFirestore(app);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App peopleDB={db} />
+    <VictimProvider peopleDB={db}>
+      <App />
+    </VictimProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

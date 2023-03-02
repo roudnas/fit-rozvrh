@@ -1,6 +1,6 @@
 import { parse } from 'date-fns';
 
-import { TimetableRecord } from './DBUtil';
+import { TimetableRecord } from '../services/DataService';
 
 const timeFormat = 'HH:mm';
 

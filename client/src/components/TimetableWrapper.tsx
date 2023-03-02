@@ -5,14 +5,9 @@ import {
   TIMETABLE_END_HOUR,
   TIMETABLE_START_HOUR,
 } from '../App';
-import { Timetable } from '../utils/DBUtil';
 import { Hour } from './Hour';
 import { ContextualizedLesson, Lessons } from './Lessons';
-
-type Props = {
-  timetable: Timetable;
-  isLoading: boolean;
-};
+import useVictim from '../hooks/useVictim';
 
 export const HourWidthContext = createContext<undefined | number>(undefined);
 
@@ -24,10 +19,13 @@ const getWindowDimensions = () => {
   };
 };
 
-export const TimetableWrapper = ({ timetable, isLoading }: Props) => {
+export const TimetableWrapper = () => {
+  const { activeTimetable, isLoading } = useVictim();
+
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions(),
   );
+
   useEffect(() => {
     const listener = () => {
       setWindowDimensions(getWindowDimensions());
@@ -50,7 +48,7 @@ export const TimetableWrapper = ({ timetable, isLoading }: Props) => {
     hours.push(<Hour hour={hour} key={hour} />);
   }
 
-  const contextualizedTimetable = timetable.map((dayLessons) => {
+  const contextualizedTimetable = activeTimetable.map((dayLessons) => {
     let prevEnd = undefined;
     const contextualizedDayLessons: ContextualizedLesson[] = [...dayLessons];
     for (const lesson of contextualizedDayLessons) {

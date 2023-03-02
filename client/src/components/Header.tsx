@@ -1,32 +1,16 @@
 import Badge from 'react-bootstrap/Badge';
 
 import { SEMESTER_START_DATE } from '../App';
-import { PersonData } from '../utils/DBUtil';
 import {getEvenOddWeek, getSemesterWeekNo} from "../utils/date";
 import { ThemeDropdown } from './ThemeDropdown';
 import { VictimBadge } from './VictimBadge';
 import { VictimDropdown } from './VictimDropdown';
+import useVictim from '../hooks/useVictim';
 
-type Props = {
-  victimId: string | null;
-  setVictimId: (newVictimId: string | null) => void;
-  favoriteId: string | null;
-  setFavoriteId: (newFavorite: string | null) => void;
-  people: PersonData[];
-};
-
-export const Header = ({
-  victimId,
-  setVictimId,
-  favoriteId,
-  setFavoriteId,
-  people,
-}: Props) => {
+export const Header = () => {
+  const { setVictimId, favoriteId } = useVictim();
   const currentWeekSemesterNo = getSemesterWeekNo(SEMESTER_START_DATE);
   const currentWeekEvenOrOdd = getEvenOddWeek();
-
-  const victim =
-    (victimId && people.find((person) => person.id === victimId)) || null;
 
   return (
     <article className="d-flex px-4 py-2 bg-second text-dark rounded nav-main align-items-center justify-content-between">
@@ -44,12 +28,8 @@ export const Header = ({
         </Badge>
       </section>
       <section className="d-flex flex-row align-items-center gap-2">
-        <VictimBadge
-          victim={victim}
-          favoriteId={favoriteId}
-          setFavoriteId={setFavoriteId}
-        />
-        <VictimDropdown people={people} setVictimId={setVictimId} />
+        <VictimBadge />
+        <VictimDropdown />
         <ThemeDropdown />
       </section>
     </article>
