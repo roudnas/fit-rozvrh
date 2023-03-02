@@ -1,13 +1,17 @@
 import { areIntervalsOverlapping, getDay } from 'date-fns';
 import { useMemo } from 'react';
+import "../styles/Lessons.scss";
 
-import { TimetableRecord } from '../services/DataService';
+import useVictim from '../hooks/useVictim';
+import { PersonInfo, TimetableRecord } from '../services/DataService';
 import { intervalFromLesson } from '../utils/TimeUtil';
 import { CollisionInfo, Lesson } from './Lesson';
 import { TimeIndicator } from './TimeIndicator';
 
 export type ContextualizedLesson = TimetableRecord & {
   prevEndTime?: string;
+  /** Array of people who share the same lesson */
+  intersections?: PersonInfo[];
 };
 
 type Props = {
@@ -21,8 +25,10 @@ const getDayName = (index: number) => {
 };
 
 export const Lessons = ({ lessons, dayIndex }: Props) => {
+  const { activeVictim } = useVictim();
+
   const lessonsWithCollisions = useMemo(() => {
-    const returnArr: (TimetableRecord & CollisionInfo)[] = [];
+    const returnArr: (ContextualizedLesson & CollisionInfo)[] = [];
 
     lessons.forEach((lesson) => {
       let currentLevel = 1;
@@ -46,11 +52,14 @@ export const Lessons = ({ lessons, dayIndex }: Props) => {
     });
 
     return returnArr;
-  }, [lessons]);
+  }, [lessons, activeVictim]);
 
   return (
     <>
-      <div className="lessons py-2 text-dark d-flex flex-row">
+      <div
+        className="lessons py-2 text-dark d-flex flex-row"
+        style={{ zIndex: dayIndex }}
+      >
         <h5 className="day-text text-light h-index my-auto">
           {getDayName(dayIndex)}
         </h5>

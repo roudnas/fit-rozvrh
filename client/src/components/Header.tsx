@@ -1,11 +1,11 @@
 import Badge from 'react-bootstrap/Badge';
 
 import { SEMESTER_START_DATE } from '../App';
-import {getEvenOddWeek, getSemesterWeekNo} from "../utils/date";
+import useVictim from '../hooks/useVictim';
+import { getEvenOddWeek, getSemesterWeekNo } from '../utils/date';
 import { ThemeDropdown } from './ThemeDropdown';
 import { VictimBadge } from './VictimBadge';
 import { VictimDropdown } from './VictimDropdown';
-import useVictim from '../hooks/useVictim';
 
 export const Header = () => {
   const { setVictimId, favoriteId } = useVictim();
