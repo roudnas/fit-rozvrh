@@ -63,7 +63,7 @@ export const TimetableWrapper = () => {
     <HourWidthContext.Provider value={hourWidthPx}>
       <div className="bg-dark wrapperino w-100 main rounded">
         <section className="lessonWrapper pt-1 main d-flex flex-column justify-content-between">
-          <div className="hours header bg-second w-100 rounded text-dark d-flex flex-row justify-content-around ps-2">
+          <div className="hours header bg-second w-100 rounded d-flex flex-row justify-content-around ps-2">
             {hours}
           </div>
           {(isLoading && (

@@ -58,7 +58,7 @@ export const Lesson = ({ dataWithCollisions }: Props) => {
   return (
     <div
       className={classNames(
-        `lesson text-dark rounded bg-${dataWithCollisions.type}`,
+        `lesson rounded bg-${dataWithCollisions.type}`,
         { 'is-inactive': !isActive }
       )}
       style={{
@@ -93,7 +93,7 @@ export const Lesson = ({ dataWithCollisions }: Props) => {
 
       <div className={`lesson-content p-2`}>
         {dataWithCollisions.note && (
-          <h6 className="note bg-danger p-1 text-bold text-light rounded">
+          <h6 className="note bg-note p-1 text-bold rounded">
             {dataWithCollisions.note}
           </h6>
         )}

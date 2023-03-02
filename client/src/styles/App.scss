@@ -2,15 +2,35 @@
 
 :root {
   --bg-tut: #aed581;
+  --bg-tutText: '#212529';
   --bg-lab: #4fc3f7;
+  --bg-labText: '#212529';
   --bg-lec: #ffb74d;
+  --bg-lecText: '#212529';
   --header: #dfb479;
+  --bg-headerText: '#212529';
+  --bg-note: #ff0000;
+  --bg-noteText: #ffffff;
 
   --transition-duration: 0.5s;
 }
 
 body {
   background-color: var(--bs-body-color);
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  position:relative;
+}
+input[type="color"]::-webkit-color-swatch {
+  position:absolute;
+  top:-1px;
+  left:-1px;
+  right:-1px;
+  bottom:-1px;
+  box-sizing: border-box;
+  border:1px solid transparent;
 }
 
 .App {
@@ -49,14 +69,45 @@ hr {
 
 .bg-lab {
   background-color: var(--bg-lab);
+  color: var(--bg-labText);
 }
 
 .bg-tut {
   background-color: var(--bg-tut);
+  color: var(--bg-tutText);
 }
 
 .bg-lec {
   background-color: var(--bg-lec);
+  color: var(--bg-lecText)
+}
+
+.bg-note {
+  background-color: var(--bg-note);
+  color: var(--bg-noteText);
+}
+
+.logo-main-fill path {
+  fill: var(--bg-note);
+}
+
+.logo-secondary-fill path {
+  fill: var(--bg-headerText);
+}
+
+.modal-dark .modal-body {
+  background-color: rgb(53, 53, 53);
+  border: none;
+}
+
+.modal-dark .modal-header {
+  background-color: rgb(70, 70, 70);
+  border: none;
+}
+
+.modal-dark .modal-footer {
+  background-color: rgb(43, 43, 43);
+  border: none;
 }
 
 .bg-black {
@@ -71,6 +122,7 @@ hr {
 .bg-second {
   transition: all var(--transition-duration) ease;
   background-color: var(--header);
+  color: var(--bg-headerText);
 }
 
 .bg-darker {

@@ -6,24 +6,30 @@ import { getEvenOddWeek, getSemesterWeekNo } from '../utils/date';
 import { ThemeDropdown } from './ThemeDropdown';
 import { VictimBadge } from './VictimBadge';
 import { VictimDropdown } from './VictimDropdown';
+import {Logo} from "../../public/Logo";
+
+export const PHRASES = ['with friends', 'with your mum', 'you dont have friends', 'with Pufek Stojící'];
 
 export const Header = () => {
   const { setVictimId, favoriteId } = useVictim();
   const currentWeekSemesterNo = getSemesterWeekNo(SEMESTER_START_DATE);
   const currentWeekEvenOrOdd = getEvenOddWeek();
-
+  const phrase = PHRASES[Math.round(Math.random() * 100) % PHRASES.length];
+  
   return (
     <article className="d-flex px-4 py-2 bg-second text-dark rounded nav-main align-items-center justify-content-between">
       <section className="d-flex flex-row align-items-center">
-        <img
-          className={`me-2 ${favoriteId !== null ? 'pointer' : ''}`}
+        <div
+          className={`d-flex flex-column align-items-center me-2 ${favoriteId !== null ? 'pointer' : ''}`}
           onClick={() => {
             favoriteId && setVictimId(favoriteId);
-          }}
-          src="/logo.png"
-          width="125"
-        />
-        <Badge bg="black">
+          }}>
+          <Logo />
+          <Badge className='bg-note' bg='note' >
+          {phrase}
+        </Badge>
+        </div>
+        <Badge className='bg-header-text' bg='note'>
           {currentWeekEvenOrOdd} week (no. {currentWeekSemesterNo})
         </Badge>
       </section>
