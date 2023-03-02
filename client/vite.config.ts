@@ -28,11 +28,10 @@ export default ({ mode }) => {
               }
             },
           ],
-          globPatterns: [
-            '**/*.{js,css,html,png,jpg,jpeg,svg,gif,ico,webp,woff,woff2,ttf,otf,eot}',
-          ],
-          cleanupOutdatedCaches: true,
         },
+        includeAssets: [
+          '**/*.png', '**/*.ico', '**/*.svg', '**/*.gif', '**/*.jpg', '**/*.jpeg',
+        ],
         devOptions: {
           enabled: true,
         },
