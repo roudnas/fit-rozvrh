@@ -20,6 +20,7 @@ body {
   flex-direction: column;
   padding-left: 20px;
   padding-right: 20px;
+  overflow: auto;
 }
 .spinner {
   min-height: 75%;
@@ -159,10 +160,6 @@ img.pointer:hover {
   background-color: crimson;
 }
 
-.wrapperino {
-  overflow-x: hidden;
-}
-
 .nav-main {
   transition: all var(--transition-duration) ease;
 }
@@ -175,9 +172,6 @@ img.pointer:hover {
 }
 
 @media screen and (max-width: 1200px) {
-  .wrapperino {
-    overflow-x: scroll !important;
-  }
   .lessons,
   .lessonWrapper {
     width: 1200px !important;
