@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@fireworks-js/react': ^2.10.2
   '@popperjs/core': ^2.10.1
   '@types/react': ^17.0.2
   '@types/react-dom': ^17.0.2
@@ -18,6 +19,7 @@ specifiers:
   eslint-plugin-import: ^2.27.5
   eslint-plugin-react: ^7.32.2
   eslint-plugin-simple-import-sort: ^10.0.0
+  fireworks-js: 2.10.2
   node-fetch: ^3.3.0
   prettier: ^2.8.4
   react: ^17.0.2
@@ -31,6 +33,7 @@ specifiers:
   web-vitals: ^1.1.2
 
 dependencies:
+  '@fireworks-js/react': 2.10.2_h7fc2el62uaa77gho3xhys6ola
   '@popperjs/core': 2.11.6
   '@typescript-eslint/eslint-plugin': 5.54.0_upfp7q3y5merkkqzbm2yvqbijq
   '@typescript-eslint/parser': 5.54.0_jofidmxrjzhj7l6vknpw5ecvfe
@@ -43,6 +46,7 @@ dependencies:
   eslint-config-prettier: 8.6.0_eslint@7.32.0
   eslint-plugin-import: 2.27.5_lpoet4woefdgt5yazgwydy42la
   eslint-plugin-react: 7.32.2_eslint@7.32.0
+  fireworks-js: 2.10.2
   node-fetch: 3.3.0
   prettier: 2.8.4
   react: 17.0.2
@@ -301,6 +305,17 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+
+  /@fireworks-js/react/2.10.2_h7fc2el62uaa77gho3xhys6ola:
+    resolution: {integrity: sha512-VJ3Q9SkKIKJ7gCYW/ht8jUzWKELuP5VPi1Ix3Y6nM//cWicYbEQ9rBldESJy30E+VL7R7SteNg5cj7KhTlglhQ==}
+    peerDependencies:
+      '@types/react': '>=16.8.0'
+      react: '>=16.8.0'
+    dependencies:
+      '@types/react': 17.0.53
+      fireworks-js: 2.10.2
+      react: 17.0.2
+    dev: false
 
   /@humanwhocodes/config-array/0.5.0:
     resolution: {integrity: sha512-FagtKFz74XrTl7y6HCzQpwDfXP0yhxe9lHLD1UZxjvZIcbyRz8zTFF/yYNfSfzU414eDwZ1SrO0Qvtyf+wFMQg==}
@@ -1364,6 +1379,10 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       to-regex-range: 5.0.1
+
+  /fireworks-js/2.10.2:
+    resolution: {integrity: sha512-2qqKsRdXHB4s40/t10xYxmLUXF6gSQwbrWFJVvySnpiOrK/EQWC2jmnJ+964kO4vUgSmESjPxjdua+Y3haQbcw==}
+    dev: false
 
   /flat-cache/3.0.4:
     resolution: {integrity: sha512-dm9s5Pw7Jc0GvMYbshN6zchCA9RgQlzzEZX3vylR9IqFfS8XciblUXOKfW6SiuJ0e13eDYZoZV5wdrev7P3Nwg==}
