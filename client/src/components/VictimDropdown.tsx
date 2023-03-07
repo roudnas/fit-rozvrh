@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { MutableRefObject, useEffect, useMemo, useRef, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 import useVictim from '../hooks/useVictim';
@@ -10,8 +10,12 @@ export function VictimDropdown() {
     useState<boolean>(false);
   const searchRef = useRef<HTMLInputElement>(null);
 
-  const firstVictimRef = useRef<HTMLButtonElement>(null);
-  const lastVictimRef = useRef<HTMLButtonElement>(null);
+  const firstVictimRef = useRef<HTMLButtonElement>(
+    null,
+  ) as MutableRefObject<HTMLButtonElement>;
+  const lastVictimRef = useRef<HTMLButtonElement>(
+    null,
+  ) as MutableRefObject<HTMLButtonElement>;
 
   useEffect(() => {
     if (displayVictimDropdown) {
@@ -22,6 +26,14 @@ export function VictimDropdown() {
   }, [displayVictimDropdown]);
 
   const victimSearchLowerCase = victimSearch.toLowerCase();
+
+  const filteredVictims = useMemo(
+    () =>
+      people.filter((victim) =>
+        victim.name.toLowerCase().startsWith(victimSearchLowerCase),
+      ),
+    [victimSearch, people],
+  );
 
   return (
     <Dropdown
@@ -50,67 +62,58 @@ export function VictimDropdown() {
               setVictimSearch(e.target.value);
             }}
             onKeyDown={(e) => {
-              if (e.key === 'ArrowDown') {
-                firstVictimRef?.current?.focus();
-                e.preventDefault();
-                e.stopPropagation();
-                return;
+              switch (e.key) {
+                case 'ArrowUp':
+                  lastVictimRef?.current?.focus();
+                  break;
+                case 'ArrowDown':
+                  firstVictimRef?.current?.focus();
+                  break;
+                case 'Enter':
+                  firstVictimRef?.current?.click();
+                  break;
+                default:
+                  // Do nothing
+                  return;
               }
-              if (e.key === 'ArrowUp') {
-                if (lastVictimRef) {
-                  lastVictimRef.current?.focus();
+
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+          />
+        </Dropdown.Header>
+        {filteredVictims.map((person, i, { length }) => {
+          const isFirst = i === 0;
+          const isLast = i === length - 1;
+
+          return (
+            <Dropdown.Item
+              key={person.name}
+              onClick={() => {
+                setVictimId(person.id);
+              }}
+              ref={(el: HTMLButtonElement) => {
+                if (isFirst) firstVictimRef.current = el;
+                if (isLast) lastVictimRef.current = el;
+              }}
+              onKeyDown={(e) => {
+                if (isFirst && e.key === 'ArrowUp') {
+                  searchRef.current?.focus();
                   e.preventDefault();
                   e.stopPropagation();
                   return;
                 }
-                firstVictimRef?.current?.focus();
-                e.preventDefault();
-                e.stopPropagation();
-                return;
-              }
-              if (e.key === 'Enter') {
-                firstVictimRef?.current?.click();
-                e.stopPropagation();
-                e.preventDefault();
-              }
-            }}
-          />
-        </Dropdown.Header>
-        {people
-          .filter((person) =>
-            person.name.toLowerCase().startsWith(victimSearchLowerCase),
-          )
-          .map((person, i, { length }) => {
-            const isFirst = i === 0;
-            const isLast = i === length - 1;
-
-            return (
-              <Dropdown.Item
-                key={person.name}
-                onClick={() => {
-                  setVictimId(person.id);
-                }}
-                ref={
-                  isFirst ? firstVictimRef : (isLast ? lastVictimRef : undefined)
+                if (isLast && e.key === 'ArrowDown') {
+                  firstVictimRef?.current?.focus();
+                  e.preventDefault();
+                  e.stopPropagation();
                 }
-                onKeyDown={(e) => {
-                  if (isFirst && e.key === 'ArrowUp') {
-                    searchRef.current?.focus();
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return;
-                  }
-                  if (isLast && e.key === 'ArrowDown') {
-                    firstVictimRef?.current?.focus();
-                    e.preventDefault();
-                    e.stopPropagation();
-                  }
-                }}
-              >
-                {person.name}
-              </Dropdown.Item>
-            );
-          })}
+              }}
+            >
+              {person.name}
+            </Dropdown.Item>
+          );
+        })}
       </Dropdown.Menu>
     </Dropdown>
   );
