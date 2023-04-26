@@ -10,7 +10,7 @@ export const CTU_TIMEZONE = 'Europe/Prague';
  * Get "timezone corrected", date object.
  */
 export function getOffsetDate() {
-  return utcToZonedTime(new Date(), CTU_TIMEZONE);
+    return utcToZonedTime(new Date(), CTU_TIMEZONE);
 }
 
 /**
@@ -18,15 +18,15 @@ export function getOffsetDate() {
  * @param semesterStartTimestamp unix timestamp of the semester start (in milliseconds).
  */
 export function getSemesterWeekNo(semesterStartTimestamp: number) {
-  return 1 + differenceInCalendarWeeks(
-    getOffsetDate(),
-    new Date(semesterStartTimestamp),
-    { weekStartsOn: 1 },
-  );
+    return 1 + differenceInCalendarWeeks(
+        getOffsetDate(),
+        new Date(semesterStartTimestamp),
+        { weekStartsOn: 1 },
+    );
 }
 
 export function getEvenOddWeek() {
-  return getWeek(
-    getOffsetDate(), { weekStartsOn: 1 }
-  ) % 2 ? 'even' : 'odd';
+    return getWeek(
+        getOffsetDate(), { weekStartsOn: 1 }
+    ) % 2 ? 'even' : 'odd';
 }

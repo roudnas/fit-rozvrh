@@ -2,6 +2,16 @@
   "name": "fit-rozvrh",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src",
+    "prettier": "prettier --check src",
+    "prettier:fix": "prettier --write src",
+    "format": "npm run lint:fix && npm run prettier:fix"
+  },
   "dependencies": {
     "@popperjs/core": "^2.10.1",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
@@ -33,16 +43,6 @@
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
     "vite-tsconfig-paths": "^4.0.5"
-  },
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "lint": "eslint src",
-    "lint:fix": "eslint --fix src",
-    "prettier": "prettier --check src",
-    "prettier:fix": "prettier --write src",
-    "format": "npm run lint:fix && npm run prettier:fix"
   },
   "eslintConfig": {
     "extends": [
