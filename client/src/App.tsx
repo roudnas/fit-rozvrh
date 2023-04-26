@@ -18,7 +18,7 @@ export const SEMESTER_START_DATE = Date.parse('2023-02-20');
 function App()
 {
   return (
-    <div className='App bg-dark py-3 text-light text-center'>
+    <div className='App bg-dark mx-3 py-3 text-light text-center'>
       <PufekFlying />
       <Header />
 
