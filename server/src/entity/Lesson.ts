@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, ManyToOne, Column, Relation} from "typeorm"
+import {Column, Entity, ManyToOne, PrimaryGeneratedColumn, Relation} from "typeorm"
+
 import {Timetable} from "./Timetable";
 
 type LessonType = "lec" | "tut" | "lab";
@@ -6,32 +7,32 @@ type LessonType = "lec" | "tut" | "lab";
 @Entity()
 export class Lesson {
     @PrimaryGeneratedColumn()
-    id: number
+      id: number
 
     @Column()
-    title: string
+      title: string
 
     @Column()
-    type: LessonType
+      type: LessonType
 
     @Column()
-    room: string
+      room: string
 
     @Column()
-    note: string
+      note: string
 
     @Column()
-    startTime: string
+      startTime: string
 
     @Column()
-    endTime: string
+      endTime: string
 
     @Column()
-    day: number
+      day: number
 
     @Column()
-    order: number
+      order: number
 
     @ManyToOne(() => Timetable, (timetable) => timetable.lessons)
-    timetable: Relation<Timetable>
+      timetable: Relation<Timetable>
 }

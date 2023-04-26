@@ -1,18 +1,19 @@
-import {Entity, PrimaryGeneratedColumn, JoinColumn, OneToOne, OneToMany, Relation} from "typeorm"
-import {User} from "./User";
+import {Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn, type Relation} from "typeorm"
+
 import {Lesson} from "./Lesson";
+import {User} from "./User";
 
 @Entity()
 export class Timetable {
     @PrimaryGeneratedColumn()
-    id: number
+      id: number
 
     @OneToOne(() => User)
     @JoinColumn()
-    user: User
+      user: User
 
     @OneToMany(() => Lesson, (lesson) => lesson.timetable, {
-        cascade: true
+      cascade: true
     })
-    lessons: Relation<Lesson>[]
+      lessons: Array<Relation<Lesson>>
 }
