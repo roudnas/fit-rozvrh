@@ -1,0 +1,20 @@
+.pufek-standing {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 1000;
+    user-select: none;
+    outline: none;
+
+    &.is-flying {
+        transition: transform 1s ease-out;
+        pointer-events: none;
+        cursor: auto;
+    }
+}
+.fireworks {
+    user-select: none;
+    z-index: 1000;
+    pointer-events: none;
+}

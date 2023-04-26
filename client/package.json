@@ -13,6 +13,7 @@
     "format": "npm run lint:fix && npm run prettier:fix"
   },
   "dependencies": {
+    "@fireworks-js/react": "^2.10.2",
     "@popperjs/core": "^2.10.1",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
@@ -25,6 +26,7 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react": "^7.32.2",
+    "fireworks-js": "2.10.2",
     "node-fetch": "^3.3.0",
     "prettier": "^2.8.4",
     "react": "^17.0.2",

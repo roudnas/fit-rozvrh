@@ -1,7 +1,8 @@
 import './styles/App.scss';
 
-import {Header} from './components/Header';
-import {TimetableWrapper} from './components/TimetableWrapper';
+import { Header } from './components/Header';
+import { TimetableWrapper } from './components/TimetableWrapper';
+import PufekFlying from './components/PufekFlying';
 
 export const APP_PADDING_X = 20;
 
@@ -14,14 +15,16 @@ export const TIMETABLE_PIN_END_HOUR = 20.7;
 // FIXME: Rework this to not be so fufu...
 export const SEMESTER_START_DATE = Date.parse('2023-02-20');
 
-function App() {
-    return (
-        <div className="App bg-dark mx-3 py-3 text-light text-center">
-            <Header />
+function App()
+{
+  return (
+    <div className='App bg-dark mx-3 py-3 text-light text-center'>
+      <PufekFlying />
+      <Header />
 
-            <TimetableWrapper />
-        </div>
-    );
+      <TimetableWrapper />
+    </div>
+  );
 }
 
 export default App;
