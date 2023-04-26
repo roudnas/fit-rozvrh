@@ -8,7 +8,9 @@
     "build": "npx tsc",
     "start": "node --experimental-specifier-resolution=node dist/src/index.js",
     "dev": "nodemon --watch './**/*.ts' --exec 'ts-node-esm --experimental-specifier-resolution=node' src/index.ts",
-    "typeorm": "typeorm-ts-node-esm"
+    "typeorm": "typeorm-ts-node-esm",
+    "lint": "eslint src",
+    "lint-fix": "eslint src --fix"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +18,8 @@
     "@types/morgan": "^1.9.4",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
     "pg": "^8.9.0",
@@ -27,8 +31,14 @@
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/node": "^18.14.2",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "eslint": "^8.39.0",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
     "nodemon": "^2.0.20",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.5"
+    "typescript": "^5.0.4"
   }
 }
