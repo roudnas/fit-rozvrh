@@ -6,14 +6,14 @@ import {DEFAULT_THEME} from '../components/ThemeDropdown'
  * @returns The RGB color
  */
 function hexToRgb(hexColor: string) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor);
-    var r = result ? parseInt(result[1], 16) : 0;
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor);
+
     return result ? {
-      r: parseInt(result[1], 16).toString(),
-      g: parseInt(result[2], 16).toString(),
-      b: parseInt(result[3], 16).toString()
+        r: parseInt(result[1], 16).toString(),
+        g: parseInt(result[2], 16).toString(),
+        b: parseInt(result[3], 16).toString()
     } : null;
-  }
+}
 
 /**
  * The brightness treshold
@@ -30,7 +30,7 @@ export function getHexBrightness(hexColor: string) {
     return rgb ? (Math.round(((parseInt(rgb.r) * 299) +
     (parseInt(rgb.g) * 587) +
     (parseInt(rgb.b) * 114)) / 1000)) : 0;
-  }
+}
 /**
  * Computes the text color according to the background color so it is visible.
  * Uses the @see BRIGHTNESS_TRESHOLD to determine if to use the @see DEFAULT_THEME.lightText or @see DEFAULT_THEME.darkText 

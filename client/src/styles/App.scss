@@ -19,10 +19,6 @@ body {
   background-color: var(--bs-body-color);
 }
 
-input[type="color"] {
-  -webkit-appearance: none;
-  position:relative;
-}
 input[type="color"]::-webkit-color-swatch {
   position:absolute;
   top:-1px;
@@ -31,6 +27,26 @@ input[type="color"]::-webkit-color-swatch {
   bottom:-1px;
   box-sizing: border-box;
   border:1px solid transparent;
+  opacity: .6 !important;
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: .6 !important;
+}
+input[type="color"]::-webkit-color-swatch {
+  border-radius: 15px;
+  border: none;
+}
+input[type="color"]::-moz-color-swatch {
+  border-radius: 15px;
+  border: none;
+  opacity: .6 !important;
 }
 
 .App {
@@ -96,17 +112,19 @@ hr {
 }
 
 .modal-dark .modal-body {
-  background-color: rgb(53, 53, 53);
+  background-color: var(--bs-body-color);
   border: none;
 }
 
 .modal-dark .modal-header {
-  background-color: rgb(70, 70, 70);
+  background-color: var(--bs-body-color);
+  opacity: .97;
   border: none;
 }
 
 .modal-dark .modal-footer {
-  background-color: rgb(43, 43, 43);
+  background-color: var(--bs-body-color);
+  opacity: .97;
   border: none;
 }
 

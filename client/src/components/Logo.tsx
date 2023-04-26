@@ -11,9 +11,9 @@ export function Logo () {
             <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                 width="125" viewBox="0 0 736.000000 200.000000"
                 preserveAspectRatio="xMidYMid meet">
-                // "FITZvrh" letters
+                // FITZvrh letters
                 <g className='logo-secondary-fill' transform="translate(0.000000,301.000000) scale(0.100000,-0.100000)"
-                stroke="none">
+                    stroke="none">
                     <path d="M6375 2988 c-3 -7 -4 -348 -3 -758 l3 -745 137 -3 138 -3 2 418 3
                     418 165 3 c158 3 166 2 183 -19 16 -19 17 -55 17 -420 l0 -399 140 0 141 0 -3
                     438 -3 437 -28 57 c-16 32 -45 71 -65 88 -67 55 -107 63 -337 69 l-210 6 -3
@@ -39,8 +39,8 @@ export function Logo () {
                     -470 140 0 140 0 3 405 c1 262 6 408 13 415 5 5 80 12 172 15 l162 5 3 70 c1
                     39 -1 75 -5 81 -5 6 -34 29 -65 52 l-57 42 -143 -1 c-92 0 -162 -6 -198 -15z"/>
                 </g>
-                // "with friends" letters
-            {/*<g className='logo-main-fill' transform="translate(0.000000,301.000000) scale(0.100000,-0.100000)"
+                // with friends letters
+                {/* <g className='logo-main-fill' transform="translate(0.000000,301.000000) scale(0.100000,-0.100000)"
                 stroke="none">
                     <path d="M316 1259 c-108 -25 -226 -122 -272 -223 -40 -87 -46 -149 -42 -430
                     3 -238 5 -266 25 -319 43 -116 134 -206 250 -250 l58 -22 3300 -3 c2376 -2
