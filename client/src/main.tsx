@@ -9,10 +9,10 @@ import App from './App';
 import { VictimProvider } from './contexts/VictimContext';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <VictimProvider>
-      <App />
-    </VictimProvider>
-  </React.StrictMode>,
-  document.getElementById('root'),
+    <React.StrictMode>
+        <VictimProvider>
+            <App />
+        </VictimProvider>
+    </React.StrictMode>,
+    document.getElementById('root'),
 );
