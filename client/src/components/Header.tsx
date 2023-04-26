@@ -1,9 +1,9 @@
 import Badge from 'react-bootstrap/Badge';
 
-import {Logo} from "./Logo";
 import { SEMESTER_START_DATE } from '../App';
 import useVictim from '../hooks/useVictim';
 import { getEvenOddWeek, getSemesterWeekNo } from '../utils/date';
+import {Logo} from "./Logo";
 import { ThemeDropdown } from './ThemeDropdown';
 import { VictimBadge } from './VictimBadge';
 import { VictimDropdown } from './VictimDropdown';
