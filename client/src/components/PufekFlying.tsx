@@ -10,6 +10,7 @@ const getRandomInt = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+/** Change that Pufek will appear on a person's timetable. */
 const PUFEK_CHANCE = parseFloat(import.meta.env.VITE_PUFEK_CHANCE) || 0.15;
 
 export default function PufekFlying() {
@@ -27,8 +28,10 @@ export default function PufekFlying() {
 
   // recalculate the chance for pufek only when the victim changes
   useEffect(() => {
-    if (Math.random() < PUFEK_CHANCE || !activeVictim)
-      return setHasPufekVisited(false);
+    if (Math.random() > PUFEK_CHANCE || !activeVictim) {
+      setHasPufekVisited(false);
+      return;
+    }
 
     console.log(`Pufek has visited ${activeVictim.name} :D`);
 
